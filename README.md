@@ -4,7 +4,7 @@ This repository contains my (@emma-campbell) entire machine set up! I was readin
 day about how dotfiles should be shared, and I became really inspired to create my own set up.
 
 Much of my inspiration was drawn from [holman/dotfiles](https://github.com/holman/dotfiles). I
-found a deeper understanding of shell scripting from the organization of his directory. However, I wanted to modify the it to be based on top of [oh-my-zsh](https://github.com/robbyrussel/oh-my-zsh.git) to have access to the sheer amount of plugins in the repo.
+found a deeper understanding of shell scripting from the organization of his directory. However, I wanted to modify the it to be based on top of [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh.git) to have access to the sheer amount of plugins in the repo.
 
 ## Custom Dot-Modules
 
