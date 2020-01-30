@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-#
-# removes and then reinstalls things
-export DOTFILES="$HOME/.dotfiles"
-source "$DOTFILES/bin/clean"
-
-cd "$HOME"
-clean_system
-sh "$DOTFILES/scripts/bootstrap"

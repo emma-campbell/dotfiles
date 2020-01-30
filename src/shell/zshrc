@@ -1,0 +1,16 @@
+export DOTFILES="$HOME/.dotfiles"
+
+export PROJECTS="$HOME/coding"
+
+if [[ -a ~/.localrc ]];
+then
+	. ~/.localrc
+fi
+
+typeset -U config_file
+config_files=($DOTFILES/**/*.zsh)
+
+if [[ -f "$DOTFILES/.oh-my-zsh" ]];
+then
+	. "$DOTFILES/.oh-my-zsh/oh-my-zsh.zsh"
+fi
