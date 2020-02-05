@@ -6,8 +6,9 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-declare -r ZSH_CUSTOM_PLUGINS="$ZSH/custom/plugins"
-declare -r ZSH_CUSTOM_THEMES="$ZSH/custom/themes"
+export ZSH="$HOME/.ohmyzsh"
+export ZSH_CUSTOM_PLUGINS="$ZSH/custom/plugins"
+export ZSH_CUSTOM_THEMES="$ZSH/custom/themes"
 
 change_default_shell() {
 
@@ -102,17 +103,17 @@ install_zsh_syntax_highlighting() {
     if [ ! -d "$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting" ];
     then
         execute \
-            "git clone $ZSH_SYNTAX_HIGHLIGHTING $ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting" \
+            "git clone $ZSH_SYNTAX_HIGHLIGHTING "$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting"" \
             "zsh-syntax-highlighting (Install)" \
         || return 1
     else
-        ask_for_confirmation "$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting already exits. Would you like to overwite it?"
+        ask_for_confirmation "'$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting' already exits. Would you like to overwite it?"
 
         if [ answer_is_yes ];
         then
             execute \
                 "rm -rf '$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting' && \
-                    git clone $ZSH_SYNTAX_HIGHLIGHTING $ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting" \
+                    git clone $ZSH_SYNTAX_HIGHLIGHTING '$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting'" \
                 "zsh-syntax-highlighting (Reinstallation)" \
             || return 1
         fi
@@ -188,23 +189,23 @@ install_typewritten() {
     if [ ! -f "$ZSH_CUSTOM_THEMES/typewritten.zsh-theme" ];
     then
         execute \
-            "git clone $TYPEWRITTEN $ZSH_CUSTOM_THEMES/typewritten" \
+            "git clone $TYPEWRITTEN '$ZSH_CUSTOM_THEMES/typewritten'" \
             "typewritten (install)" \
         || return 1
 
         execute \
-            "ln -s $ZSH_CUSTOM_THEMES/typewritten/typewritten.zsh-theme $ZSH_CUSTOM_THEMES/typewritten.zsh-theme" \
+            "ln -s $ZSH_CUSTOM_THEMES/typewritten/typewritten.zsh-theme '$ZSH_CUSTOM_THEMES/typewritten.zsh-theme'" \
             "typewritten (link)" \
         || return 1
 
     else
 
-        ask_for_confirmation "$ZSH_CUSTOM_THEMES/typewritten.zsh-theme already exists. Would you like to overwrite it?"
+        ask_for_confirmation "'$ZSH_CUSTOM_THEMES/typewritten.zsh-theme' already exists. Would you like to overwrite it?"
 
         if [ answer_is_yes ];
         then
             execute \
-                "rm -rf $ZSH_CUSTOM_THEMES/typewritten && rm -rf $ZSH_CUSTOM_THEMES/typewritten.zsh-theme" \
+                "rm -rf '$ZSH_CUSTOM_THEMES/typewritten' && rm -rf '$ZSH_CUSTOM_THEMES/typewritten.zsh-theme'" \
                 "typewritten (remove)" \
             || return 1
 
@@ -214,7 +215,7 @@ install_typewritten() {
             || return 1
 
             execute \
-                "ln -s $ZSH_CUSTOM_THEMES/typewritten/typewritten.zsh-theme $ZSH_CUSTOM_THEMES/typewritten.zsh-theme" \
+                "ln -s '$ZSH_CUSTOM_THEMES/typewritten/typewritten.zsh-theme' '$ZSH_CUSTOM_THEMES/typewritten.zsh-theme'" \
                 "typewritten (link)" \
             || return 1
         fi
