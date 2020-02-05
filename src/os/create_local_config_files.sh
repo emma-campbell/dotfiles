@@ -1,4 +1,4 @@
-#!/bin/bash
+# /bin/bash
 
 cd "$(dirname "${BASH_SOURCE[0]}")" \
     && . "utils.sh"
@@ -7,22 +7,27 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 create_gitconfig_local() {
 
-    declare -r FILE_PATH="$HOME/.gitconfig.local"
+    declare -r FILE_PATH="../git/gitconfig.local"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    if [ ! -e "$FILE_PATH" ] || [ -z "$FILE_PATH" ]; then
+    if [ ! -f $FILE_PATH ];
+    then
+        print_in_purple "\n  • Setting up gitconfig\n\n"
 
-        printf "%s\n" \
-"[commit]
-    # Sign commits using GPG.
-    # https://help.github.com/articles/signing-commits-using-gpg/
-    # gpgsign = true
-[user]
-    name =
-    email =
-    # signingkey =" \
-        >> "$FILE_PATH"
+        ask "What is your github author name? "
+        AUTHORNAME="$(get_answer)"
+
+        ask "What is you github email? "
+        EMAIL="$(get_answer)"
+
+        printf \
+            "[user]
+                    name = %s
+                    email = %s" \
+            $AUTHORNAME \
+            $EMAIL \
+            >> $FILE_PATH
     fi
 
     print_result $? "$FILE_PATH"

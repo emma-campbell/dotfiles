@@ -6,6 +6,9 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+declare -r ZSH_CUSTOM_PLUGINS="$ZSH/custom/plugins"
+declare -r ZSH_CUSTOM_THEMES="$ZSH/custom/themes"
+
 change_default_shell() {
 
     local configs=""
@@ -15,9 +18,6 @@ change_default_shell() {
     local brewPrefix=""
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Try to get the path of the `Bash`
-    # version installed through `Homebrew`.
 
     brewPrefix="$(brew_prefix)" \
         || return 1
@@ -64,47 +64,172 @@ export PATH
 
 install_oh_my_zsh() {
 
-    export ZSH="$HOME/dotfiles/.ohmyzsh"
+    export ZSH="$HOME/.ohmyzsh"
 
     if [ ! -d $ZSH ];
     then
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        execute \
+            "sh -c $(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) "" --unattended --silent" \
+            "ohmyzsh" \
+        || return 1
     else
         ask_for_confirmation "$ZSH already exists. Would you like to overwrite it?"
 
         if [ answer_is_yes ];
         then
-            sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+            execute \
+                "rm -rf $ZSH" \
+                "ohmyzsh (uninstall)" \
+            || return 1
+            execute \
+                "sh -c $(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) "" --unattended --silent" \
+                "ohmyzsh (reinstall)" \
+            || return 1
         fi
     fi
+
+    mv ~/.zshrc "../../../shell/oh-my-zshrc"
+
+    print_result $? "ohmyzsh"
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-install_plugins() {
-
-    local ZSH_CUSTOM_PLUGINS="$ZSH/custom/plugins"
-    local ZSH_CUSTOM_THEMES="$ZSH/custom/themes"
+install_zsh_syntax_highlighting() {
 
     local ZSH_SYNTAX_HIGHLIGHTING="https://github.com/zsh-users/zsh-syntax-highlighting.git"
+
+    if [ ! -d "$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting" ];
+    then
+        execute \
+            "git clone $ZSH_SYNTAX_HIGHLIGHTING $ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting" \
+            "zsh-syntax-highlighting (Install)" \
+        || return 1
+    else
+        ask_for_confirmation "$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting already exits. Would you like to overwite it?"
+
+        if [ answer_is_yes ];
+        then
+            execute \
+                "rm -rf '$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting' && \
+                    git clone $ZSH_SYNTAX_HIGHLIGHTING $ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting" \
+                "zsh-syntax-highlighting (Reinstallation)" \
+            || return 1
+        fi
+    fi
+
+    print_result $? "zsh-syntax-highlighting"
+
+}
+
+
+install_zsh_autosuggestions() {
+
     local ZSH_AUTOSUGGESTIONS="https://github.com/zsh-users/zsh-autosuggestions"
+
+    if [ ! -d "$ZSH_CUSTOM_PLUGINS/zsh-autosuggestions" ];
+    then
+        execute \
+            "git clone $ZSH_AUTOSUGGESTIONS '$ZSH_CUSTOM_PLUGINS/zsh-autosuggestions'" \
+            "zsh-autosuggestions (Install)" \
+        || return 1
+    else
+
+        ask_for_confirmation "$ZSH_CUSTOM_PLUGINS/zsh-autosuggestions already exists. Would you like to overwrite it?"
+
+        if [ answer_is_yes ];
+        then
+            execute \
+                "rm -rf '$ZSH_CUSTOM_PLUGINS/zsh-autosuggestions' && \
+                    git clone $ZSH_AUTOSUGGESTIONS '$ZSH_CUSTOM_PLUGINS/zsh-autosuggestions'" \
+                "zsh-autosuggestions (Reinstallation)" \
+            || return 1
+        fi
+    fi
+
+    print_result $? "zsh-autosuggestions"
+}
+
+install_zsh_apple_touchbar() {
+
     local ZSH_APPLE_TOUCHBAR="https://github.com/zsh-users/zsh-apple-touchbar"
+
+    if [ ! -d "$ZSH_CUSTOM_PLUGINS/zsh-apple-touchbar" ];
+    then
+        execute \
+            "git clone $ZSH_APPLE_TOUCHBAR '$ZSH_CUSTOM_PLUGINS/zsh-apple-touchbar'" \
+            "zsh-apple-touchbar (Install)" \
+        || return 1
+    else
+
+        ask_for_confirmation "$ZSH_CUSTOM_PLUGINS/zsh-apple-touchbar already exists. Would you like to overwrite it?"
+
+        if [ answer_is_yes ];
+        then
+            execute \
+                "rm -rf $ZSH_CUSTOM_PLUGINS/zsh-apple-touchbar" \
+                "zsh-apple-touchbar (remove)" \
+            || return 1
+
+            execute \
+                "git clone $ZSH_APPLE_TOUCHBAR '$ZSH_CUSTOM_PLUGINS/zsh-apple-touchbar'" \
+                "zsh-apple-touchbar (install)" \
+            || return 1
+        fi
+    fi
+
+    print_result $? "zsh-apple-touchbar"
+}
+
+install_typewritten() {
 
     local TYPEWRITTEN="https://github.com/reobin/typewritten"
 
-    print_in_purple "\n    Installing zsh-syntax-highlighting\n\n"
-    git clone $ZSH_SYNTAX_HIGHLIGHTING "$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting"
+    if [ ! -f "$ZSH_CUSTOM_THEMES/typewritten.zsh-theme" ];
+    then
+        execute \
+            "git clone $TYPEWRITTEN $ZSH_CUSTOM_THEMES/typewritten" \
+            "typewritten (install)" \
+        || return 1
 
-    print_in_purple "\n    Installing zsh-autosuggestions\n\n"
-    git clone $ZSH_AUTOSUGGESTIONS "$ZSH_CUSTOM_PLUGINS/zsh-autosuggestions"
+        execute \
+            "ln -s $ZSH_CUSTOM_THEMES/typewritten/typewritten.zsh-theme $ZSH_CUSTOM_THEMES/typewritten.zsh-theme" \
+            "typewritten (link)" \
+        || return 1
 
-    print_in_purple "\n    Installing ZSH touchbar support\n\n"
-    git clone $ZSH_APPLE_TOUCHBAR "$ZSH_CUSTOM_PLUGINS/zsh-apple-touchbar"
+    else
 
-    print_in_purple "\n    Installing Typewritten theme\n\n"
-    git clone $TYPEWRITTEN "$ZSH_CUSTOM_THEMES/typewritten"
-    ln -s "$ZSH_CUSTOM_THEMES/typewritten/typewritten.zsh-theme" "$ZSH_CUSTOM_THEMES/typewritten.zsh-theme"
+        ask_for_confirmation "$ZSH_CUSTOM_THEMES/typewritten.zsh-theme already exists. Would you like to overwrite it?"
 
+        if [ answer_is_yes ];
+        then
+            execute \
+                "rm -rf $ZSH_CUSTOM_THEMES/typewritten && rm -rf $ZSH_CUSTOM_THEMES/typewritten.zsh-theme" \
+                "typewritten (remove)" \
+            || return 1
+
+            execute \
+                "git clone $TYPEWRITTEN '$ZSH_CUSTOM_THEMES/typewritten'" \
+                "typewritten (install)" \
+            || return 1
+
+            execute \
+                "ln -s $ZSH_CUSTOM_THEMES/typewritten/typewritten.zsh-theme $ZSH_CUSTOM_THEMES/typewritten.zsh-theme" \
+                "typewritten (link)" \
+            || return 1
+        fi
+
+    fi
+
+    print_result $? "typewritten"
+}
+
+
+install_plugins() {
+    install_zsh_syntax_highlighting && \
+        install_zsh_autosuggestions && \
+        install_zsh_apple_touchbar && \
+        install_typewritten
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -114,12 +239,9 @@ main() {
     print_in_purple "\n   zsh\n\n"
 
     brew_install "zsh" "zsh" \
-        && change_default_bash
-
-    brew_install "zsh completions" "zsh-completions"
-
-    install_plugins
-
+        && change_default_shell \
+        && install_oh_my_zsh \
+        && install_plugins
 }
 
 main

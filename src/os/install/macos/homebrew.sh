@@ -67,8 +67,6 @@ main() {
     opt_out_of_analytics
 
     brew_update
-    brew_upgrade
-
 }
 
 main

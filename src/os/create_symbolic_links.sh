@@ -1,4 +1,4 @@
-#!/bin/bash
+# /bin/bash
 
 cd "$(dirname "${BASH_SOURCE[0]}")" \
     && . "utils.sh"
@@ -9,12 +9,14 @@ create_symlinks() {
 
     declare -a FILES_TO_SYMLINK=(
 
-       	"shell/aliases.zsh"
-	"shell/config.zsh"
-	"shell/zshrc"
+        "shell/aliases.zsh"
+    	"shell/config.zsh"
+        "shell/oh-my-zshrc"
+	    "shell/zshrc"
 
         "git/gitattributes"
         "git/gitconfig"
+        "git/gitconfig.local"
         "git/gitignore"
 
         "tmux/tmux.conf"

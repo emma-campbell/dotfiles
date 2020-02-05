@@ -12,8 +12,19 @@ print_in_purple "\n   Browsers\n"
 
 printf "\n"
 
-brew_install "Chrome" "google-chrome" "homebrew/cask" "cask"
-brew_install "Chromium" "chromium" "homebrew/cask" "cask"
+if ! cmd_exists "google-chrome";
+then
+    brew_install "Chrome" "google-chrome" "homebrew/cask" "cask"
+else
+    print_success "google-chrome"
+fi
+
+if ! cmd_exists "chromium";
+then
+    brew_install "Chromium" "chromium" "homebrew/cask" "cask"
+else
+    print_succes "chromium"
+fi
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

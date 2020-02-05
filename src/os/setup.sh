@@ -185,8 +185,6 @@ main() {
 
     if [ -x "utils.sh" ]; then
         . "utils.sh" || exit 1
-    else
-        download_utils || exit 1
     fi
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -208,10 +206,6 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    ./create_symbolic_links.sh "$@"
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
     ./create_local_config_files.sh
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -224,6 +218,9 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+    ./create_symbolic_links.sh "$@"
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     if ! $skipQuestions; then
         ./restart.sh
