@@ -1,16 +1,33 @@
-export DOTFILES="$HOME/.dotfiles"
+#!/bin/zsh
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$HOME/.yarn/bin:$PATH"
 
+export ZSH="$HOME/.ohmyzsh"
+export DOTFILES="$HOME/.dotfiles"
 export PROJECTS="$HOME/coding"
+
+export LSCOLORS='exfxcxdxbxegedabagacad'
+export CLICOLOR=true
+
+DEFAULT_USER="$(whoami)"
+ZSH_THEME="typewritten"
+declare -a plugins=(zsh-autosuggestions zsh-syntax-highlighting zsh-apple-touchbar git brew docker docker-compose)
+
+## NVM path (should be before sourcing zsh)
+export NVM_LAZY_LOAD=true
+export NVM_AUTO_USE=true
+
+if [ -d "$HOME/.ohmyzsh" ];
+then
+    . "$ZSH/oh-my-zsh.sh"
+fi
+
+. ~/.aliases.zsh
 
 if [[ -a ~/.localrc ]];
 then
 	. ~/.localrc
 fi
 
-typeset -U config_file
-config_files=($DOTFILES/**/*.zsh)
 
-if [[ -f "$DOTFILES/.oh-my-zsh" ]];
-then
-	. "$DOTFILES/.oh-my-zsh/oh-my-zsh.zsh"
-fi
+
