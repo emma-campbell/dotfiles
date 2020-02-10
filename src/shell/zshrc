@@ -29,5 +29,8 @@ then
 	. ~/.localrc
 fi
 
+# Adding path for MJ
+export PATH="$PATH:/usr/local/smlnj/bin"
 
 
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
