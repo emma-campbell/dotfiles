@@ -34,3 +34,4 @@ export PATH="$PATH:/usr/local/smlnj/bin"
 
 
 export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+export PATH="/Users/emma/Library/Python/3.8/bin:$PATH"

@@ -4,6 +4,40 @@
 
 set nocompatible                    " Don't make Vim vi-compatibile.
 
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'     " Vundle
+Plugin 'scrooloose/nerdtree'      " NERD Tree
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-fugitive'
+Plugin 'ervandew/supertab'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'thiagoalessio/rainbow_levels.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'valloric/youcompleteme'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'yuttie/comfortable-motion.vim'
+Plugin 'tpope/vim-sensible'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-markdown'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'benmills/vimux'
+
+" Language Support
+Plugin 'leafgarland/typescript-vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'klen/python-mode'
+Plugin 'paredit.vim'
+Plugin 'jez/vim-better-sml'
+
+call vundle#end()
+
 syntax on                           " Enable syntax highlighting.
 
 if has('autocmd')
@@ -154,45 +188,41 @@ if has('windows')
     set winminheight=0              " Allow windows to be squashed.
 endif
 
-" ------------------------------------------------------------------------------
-" | Plugins 
-" ------------------------------------------------------------------------------
+" ----------------------------------------------------------------------
+" | Plugins - Vim-Better-SML                                           |
+" ----------------------------------------------------------------------
+augroup vimbettersml
+    au!
 
-function! InitPlugins() abort
-	filetype off
-	set rtp+=~/.vim/bundle/Vundle.vim
+    " - - - - - - - - - - - -  Keybindings - - - - - - - - - - - - - -
+    au FileType sml nnoremap <silent> <buffer> <leader>t :SMLTypeQuery<CR>
+    au FileType sml nnoremap <silent> <buffer> gd :SMLJumpToDef<CR>
 
-	call vundle#begin()
-	
-	Plugin 'VundleVim/Vundle.vim'     " Vundle 
-	Plugin 'scrooloose/nerdtree'      " NERD Tree
-	Plugin 'scrooloose/syntastic'
-	Plugin 'scrooloose/nerdcommenter'
-	Plugin 'godlygeek/tabular'
-	Plugin 'tpope/vim-fugitive'
-	Plugin 'ervandew/supertab'
-	Plugin 'nathanaelkane/vim-indent-guides'
-	Plugin 'editorconfig/editorconfig-vim'
-	Plugin 'thiagoalessio/rainbow_levels.vim'
-	Plugin 'tpope/vim-fugitive'
-	Plugin 'tpope/vim-surround'
-	Plugin 'valloric/youcompleteme'
-	Plugin 'airblade/vim-gitgutter'
-	Plugin 'yuttie/comfortable-motion.vim'
-	Plugin 'tpope/vim-sensible'
-	Plugin 'ctrlpvim/ctrlp.vim'
-	Plugin 'tpope/vim-markdown'
-	Plugin 'tomtom/tcomment_vim'
-	
-	" Language Support
-	Plugin 'leafgarland/typescript-vim'
-	Plugin 'pangloss/vim-javascript'
-	Plugin 'klen/python-mode'
-	Plugin 'paredit.vim'
+    " - - - - - - - - - - - - - - - REPL - - - - - - - - - - - - - - - -
+    " open the RELP (mnemonic: s -> start)
+    au FileType sml nnoremap <silent> <buffer> <leader>is :SMLReplStart<CR>
+    " close the REPL (mnemonic: k -> kill)
+    au FileType sml nnoremap <silent> <buffer> <leader>ik :SMLReplStop<CR>
+    " build the project (using CM if possible)
+    au FileType sml nnoremap <silent> <buffer> <leader>ib :SMLReplBuild<CR>
+    " for opening a structure, not a file
+    au FileType sml nnoremap <silent> <buffer> <leader>io :SMLReplOpen<CR>
+    " use the current file into the REPL (even if using CM)
+    au FileType sml nnoremap <silent> <buffer> <leader>iu :SMLReplUse<CR>
+    " clear the REPL screen
+    au FileType sml nnoremap <silent> <buffer> <leader>ic :SMLReplClear<CR>
+    " set the print depth to 100
+    au FileType sml nnoremap <silent> <buffer> <leader>ip :SMLReplPrintDepth<CR>
 
-	call vundle#end()
+    " - - - - - - - - - - - - - Other settings - - - - - - - - - - - - -
 
-endfunction
+    " Uncomment to try out conceal characters
+    au FileType sml setlocal conceallevel=2
+
+    " Uncomment to try out same-width conceal characters
+    let g:sml_greek_tyvar_show_tick = 1
+
+augroup END
 
 
 " ----------------------------------------------------------------------
