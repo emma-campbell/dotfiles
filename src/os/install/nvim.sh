@@ -10,7 +10,7 @@ download_spacecamp() {
     local SPACECAMP_VIM_FILE="https://raw.githubusercontent.com/jaredgorski/SpaceCamp/master/colors/spacecamp.vim"
 
     execute \
-        "curl -l $SPACECAMP_VIM_FILE -o $HOME/.vim/colors/spacecamp.vim" \
+        "curl -l $SPACECAMP_VIM_FILE -o $HOME/.dotfiles/src/config/nvim/colors" \
         "Install spacecamp" \
     || return 1
 }
@@ -19,30 +19,30 @@ download_spacecamp() {
 
 install_plugins() {
 
-    declare -r VIM_VUNDLE_DIR="$HOME/.vim/bundle/Vundle.vim"
-    declare -r VUNDLE_REPO_URL="https://github.com/VundleVim/Vundle.vim"
+    declare -r VIM_PLUG_DIR="$HOME/.dotfiles/src/config/nvim/autoload"
+    declare -r VIM_PLUG_URL="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     # Install plugins.
-    if [ ! -d $VIM_VUNDLE_DIR ];
+    if [ ! -d $VIM_PLUG_DIR ];
     then
         execute \
-            "git clone --quiet $VUNDLE_REPO_URL $VIM_VUNDLE_DIR" \
-            "vundle (install)" \
+            "curl -fLo $VIM_PLUG_DIR $VIM_PLUG_URL" \
+            "vim-plug (install)" \
         || return 1
     else
 
-        ask_for_confirmation "$VIM_VUNDLE_DIR already exists. Would you like to overwrite it?"
+        ask_for_confirmation "$VIM_PLUG_DIR already exists. Would you like to overwrite it?"
 
         if answer_is_yes;
         then
-            rm -rf $VIM_VUNDLE_DIR
+            rm -rf $VIM_PLUG_DIR
 
-            execute \
-               "git clone $VUNDLE_REPO_URL $VIM_VUNDLE_DIR" \
-               "vundle (install)" \
-            || return 1
+        	execute \
+            		"curl -fLo $VIM_PLUG_DIR/plug.vim $VIM_PLUG_URL" \
+            		"vim-plug (install)" \
+        	|| return 1
 
         fi
     fi
@@ -58,7 +58,7 @@ main() {
 
     print_in_purple "\n   Vim\n\n"
 
-    "./$(get_os)/vim.sh"
+    "./$(get_os)/nvim.sh"
 
     install_plugins
 

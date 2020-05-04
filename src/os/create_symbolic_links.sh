@@ -12,7 +12,7 @@ create_symlinks() {
         "shell/aliases.zsh"
     	"shell/config.zsh"
         "shell/oh-my-zshrc"
-	    "shell/zshrc"
+	"shell/zshrc"
 
         "git/gitattributes"
         "git/gitconfig"
@@ -20,9 +20,7 @@ create_symlinks() {
         "git/gitignore"
 
         "tmux/tmux.conf"
-
-        "vim/vim"
-        "vim/vimrc"
+	"config"
 
     )
 

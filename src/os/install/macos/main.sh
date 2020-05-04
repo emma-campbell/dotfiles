@@ -14,4 +14,4 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 ./imgcat.sh
 ./git.sh
 ./tmux.sh
-./../vim.sh
+./../nvim.sh
