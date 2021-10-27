@@ -209,6 +209,10 @@ main() {
     ./create_local_config_files.sh
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    
+    ./set_github_ssh_key.sh
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     ./preferences/main.sh
 
