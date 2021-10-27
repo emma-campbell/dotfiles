@@ -34,6 +34,8 @@ export CLICOLOR=true
 
 DEFAULT_USER="$(whoami)"
 ZSH_THEME="typewritten"
+TYPEWRITTEN_PROMPT_LAYOUT="singleline_verbose"
+
 declare -a plugins=(zsh-autosuggestions zsh-syntax-highlighting git brew docker docker-compose)
 
 ## NVM path (should be before sourcing zsh)
