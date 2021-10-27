@@ -16,7 +16,6 @@ As I got further into creating my ideal setup, I realized there were some things
    * [typewritten](https://github.com/reobin/typewritten)
    * [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting.git)
    * [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-   * [zsh-apple-touchbar](https://github.com/zsh-user/zsh-apple-touchbar)
 
 Before, I was using Spacemacs and had a seperate repository setting that up, but now I have changed to Vim and TMUX, which are also setup through this script. For vim plugins, I use [Vundle](https://github.com/Vundle/Vundle.vim) as a package-manager.
 
@@ -27,5 +26,4 @@ Run the following:
 git clone https://github.com/emma-campbell/dotfiles  ~/.dotfiles
 cd ~/.dotfiles
 sh ./src/os/setup.sh
-zsh
 ```
