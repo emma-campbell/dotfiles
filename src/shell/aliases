@@ -1,0 +1,22 @@
+#!/bin/bash
+
+alias reload!=". ~/.zshrc"
+
+alias ..="cd ../"
+alias ...="cd ../../"
+alias ....="cd ../../../"
+
+alias cp="cp -iv"
+alias mkdir="mkdir -pv"
+alias mv="mv -iv"
+alias c="clear"
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+
+alias pip="pip3.8"
+alias python="python3.8"
+alias vim="nvim"
+alias chrome="chrome-cli"
+
+# Load OS specific configs
+
+. "$HOME/.mac.aliases"

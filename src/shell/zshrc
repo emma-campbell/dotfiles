@@ -1,11 +1,11 @@
-#!/bin/zsh
+# /bin/zsh
 #
 # ▄▄▄ .• ▌ ▄ ·. • ▌ ▄ ·.  ▄▄▄· 
 # ▀▄.▀··██ ▐███▪·██ ▐███▪▐█ ▀█ 
 # ▐▀▀▪▄▐█ ▌▐▌▐█·▐█ ▌▐▌▐█·▄█▀▀█ 
 # ▐█▄▄▌██ ██▌▐█▌██ ██▌▐█▌▐█ ▪▐▌
 #  ▀▀▀ ▀▀  █▪▀▀▀▀▀  █▪▀▀▀ ▀  ▀
-# © 2020 Emma Campbell
+# © 2021 Emma Campbell
 # 
 # Permission is hereby granted, free of charge, to any person obtaining 
 # a copy of this software and associated documentation files (the 
@@ -25,10 +25,6 @@
 # CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-export PATH=/Users/emma/.npm-global/bin:$HOME/bin:/usr/local/bin:$PATH
-export PATH="$HOME/.yarn/bin:$PATH"
-
 export ZSH="$HOME/.ohmyzsh"
 export DOTFILES="$HOME/.dotfiles"
 export PROJECTS="$HOME/coding"
@@ -38,7 +34,7 @@ export CLICOLOR=true
 
 DEFAULT_USER="$(whoami)"
 ZSH_THEME="typewritten"
-declare -a plugins=(zsh-autosuggestions zsh-syntax-highlighting zsh-apple-touchbar git brew docker docker-compose)
+declare -a plugins=(zsh-autosuggestions zsh-syntax-highlighting git brew docker docker-compose)
 
 ## NVM path (should be before sourcing zsh)
 export NVM_LAZY_LOAD=true
@@ -46,26 +42,13 @@ export NVM_AUTO_USE=true
 
 if [ -d "$HOME/.ohmyzsh" ];
 then
-    . "$ZSH/oh-my-zsh.sh"
+    source "$ZSH/oh-my-zsh.sh"
 fi
 
-. ~/.aliases.zsh
+source ~/.aliases
 
 if [[ -a ~/.localrc ]];
 then
-	. ~/.localrc
+	source ~/.localrc
 fi
 
-# Adding path for MJ
-export PATH="$PATH:/usr/local/smlnj/bin"
-
-
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
-export PATH="/Users/emma/Library/Python/3.8/bin:$PATH"
-export PATH="/usr/local/opt/ncurses/bin:$PATH"
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-export PATH="/usr/local/opt/llvm/bin:$PATH"
-
-neofetch

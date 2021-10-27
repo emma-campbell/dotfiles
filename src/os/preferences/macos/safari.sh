@@ -1,0 +1,34 @@
+#!/bin/bash
+
+cd "$(dirname "${BASH_SOURCE[0]}")" \
+    && . "../../utils.sh"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+print_in_purple "\n   Safari\n\n"
+
+execute "defaults write com.apple.Safari AutoOpenSafeDownloads -bool false" \
+    "Disable opening 'safe' files automatically"
+
+execute "defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true" \
+    "Set backspace key to go to the previous page in history"
+
+execute "defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true && \
+         defaults write com.apple.Safari IncludeDevelopMenu -bool true && \
+         defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true" \
+    "Enable the 'Develop' menu and the 'Web Inspector'"
+
+execute "defaults write com.apple.Safari IncludeInternalDebugMenu -bool true" \
+    "Enable 'Debug' menu"
+
+execute "defaults write com.apple.Safari SuppressSearchSuggestions -bool true && \
+         defaults write com.apple.Safari UniversalSearchEnabled -bool false" \
+    "Don’t send search queries to Apple"
+
+execute "defaults write -g WebKitDeveloperExtras -bool true" \
+    "Add a context menu item for showing the 'Web Inspector' in web views"
+
+execute "defaults write com.apple.Safari WebKitInitialTimedLayoutDelay 0.25" \
+    "Disable the standard delay in rendering a web page."
+
+killall "Safari" &> /dev/null

@@ -6,7 +6,14 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-print_in_purple "\n   tmux\n\n"
+./xcode.sh
+./homebrew.sh
+./zsh.sh
 
-brew_install "tmux" "tmux"
-brew_install "tmux (pasteboard)" "reattach-to-user-namespace"
+./git.sh
+./chrome.sh
+./gimp.sh
+./vscode.sh
+./../nvm.sh
+./../nvim.sh
+./yarn.sh

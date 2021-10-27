@@ -23,14 +23,13 @@ get_homebrew_git_config_file_path() {
 }
 
 install_homebrew() {
+	if ! cmd_exists "brew"; then
+        	ask_for_sudo
+        	printf "\n" | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" &> /dev/null
+        	#  └─ simulate the ENTER keypress
+    	fi
 
-    if ! cmd_exists "brew"; then
-        printf "\n" | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" &> /dev/null
-        #        └─ simulate the ENTER keypress
-    fi
-
-    print_result $? "Homebrew"
-
+    	print_result $? "Homebrew"
 }
 
 opt_out_of_analytics() {
@@ -67,6 +66,7 @@ main() {
     opt_out_of_analytics
 
     brew_update
+    brew_upgrade
 }
 
 main

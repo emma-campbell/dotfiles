@@ -10,57 +10,6 @@ export ZSH="$HOME/.ohmyzsh"
 export ZSH_CUSTOM_PLUGINS="$ZSH/custom/plugins"
 export ZSH_CUSTOM_THEMES="$ZSH/custom/themes"
 
-change_default_shell() {
-
-    local configs=""
-    local pathConfig=""
-
-    local newShellPath=""
-    local brewPrefix=""
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    brewPrefix="$(brew_prefix)" \
-        || return 1
-
-    pathConfig="PATH=\"$brewPrefix/bin:\$PATH\""
-    configs="
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-$pathConfig
-export PATH
-"
-
-    newShellPath="$brewPrefix/bin/zsh" \
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Add the path of the `Bash` version installed through `Homebrew`
-    # to the list of login shells from the `/etc/shells` file.
-    #
-    # This needs to be done because applications use this file to
-    # determine whether a shell is valid (e.g.: `chsh` consults the
-    # `/etc/shells` to determine whether an unprivileged user may
-    # change the login shell for her own account).
-    #
-    # http://www.linuxfromscratch.org/blfs/view/7.4/postlfs/etcshells.html
-
-    if ! grep "$newShellPath" < /etc/shells &> /dev/null; then
-        execute \
-            "printf '%s\n' '$newShellPath' | sudo tee -a /etc/shells" \
-            "zsh (add '$newShellPath' in '/etc/shells')" \
-        || return 1
-    fi
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Set latest version of `Bash` as the default
-    # (macOS uses by default an older version of `Bash`).
-
-    chsh -s "$newShellPath" &> /dev/null
-    print_result $? "zsh (use latest version)"
-
-}
-
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 install_oh_my_zsh() {
@@ -151,37 +100,6 @@ install_zsh_autosuggestions() {
     print_result $? "zsh-autosuggestions"
 }
 
-install_zsh_apple_touchbar() {
-
-    local ZSH_APPLE_TOUCHBAR="https://github.com/zsh-users/zsh-apple-touchbar"
-
-    if [ ! -d "$ZSH_CUSTOM_PLUGINS/zsh-apple-touchbar" ];
-    then
-        execute \
-            "git clone $ZSH_APPLE_TOUCHBAR '$ZSH_CUSTOM_PLUGINS/zsh-apple-touchbar'" \
-            "zsh-apple-touchbar (Install)" \
-        || return 1
-    else
-
-        ask_for_confirmation "$ZSH_CUSTOM_PLUGINS/zsh-apple-touchbar already exists. Would you like to overwrite it?"
-
-        if [ answer_is_yes ];
-        then
-            execute \
-                "rm -rf $ZSH_CUSTOM_PLUGINS/zsh-apple-touchbar" \
-                "zsh-apple-touchbar (remove)" \
-            || return 1
-
-            execute \
-                "git clone $ZSH_APPLE_TOUCHBAR '$ZSH_CUSTOM_PLUGINS/zsh-apple-touchbar'" \
-                "zsh-apple-touchbar (install)" \
-            || return 1
-        fi
-    fi
-
-    print_result $? "zsh-apple-touchbar"
-}
-
 install_typewritten() {
 
     local TYPEWRITTEN="https://github.com/reobin/typewritten"
@@ -229,7 +147,6 @@ install_typewritten() {
 install_plugins() {
     install_zsh_syntax_highlighting && \
         install_zsh_autosuggestions && \
-        install_zsh_apple_touchbar && \
         install_typewritten
 }
 
@@ -239,9 +156,7 @@ main() {
 
     print_in_purple "\n   zsh\n\n"
 
-    brew_install "zsh" "zsh" \
-        && change_default_shell \
-        && install_oh_my_zsh \
+    install_oh_my_zsh \
         && install_plugins
 }
 

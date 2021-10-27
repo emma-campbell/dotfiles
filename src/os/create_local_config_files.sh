@@ -7,11 +7,11 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 create_gitconfig_local() {
 
-    declare -r FILE_PATH="../git/gitconfig.local"
+    declare -r FILE_PATH="$HOME/.gitconfig.local"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    if [ ! -f $FILE_PATH ];
+    if [ ! -e $FILE_PATH ] || [ -z "$FILE_PATH" ];
     then
         print_in_purple "\n  • Setting up gitconfig\n\n"
 

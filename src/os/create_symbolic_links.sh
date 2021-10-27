@@ -8,20 +8,15 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 create_symlinks() {
 
     declare -a FILES_TO_SYMLINK=(
-
-        "shell/aliases.zsh"
-    	"shell/config.zsh"
+        "shell/aliases"
         "shell/oh-my-zshrc"
+	"shell/zsh_tools"
+	"shell/curlrc"
+	"shell/mac.aliases"
 	"shell/zshrc"
 
-        "git/gitattributes"
         "git/gitconfig"
-        "git/gitconfig.local"
         "git/gitignore"
-
-        "tmux/tmux.conf"
-	"config"
-
     )
 
     local i=""

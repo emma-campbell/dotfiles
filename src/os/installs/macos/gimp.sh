@@ -6,12 +6,6 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-./xcode.sh
-./homebrew.sh
-./zsh.sh
+print_in_purple "\n   GIMP\n\n"
 
-./chrome.sh
-./imgcat.sh
-./git.sh
-./tmux.sh
-./../nvim.sh
+brew_install "GIMP" "gimp" "--cask"
