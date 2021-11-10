@@ -225,9 +225,7 @@ main() {
     ./create_symbolic_links.sh "$@"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    
-    zsh && chsh -s $(which zsh)
-    
+        
     source ~/.zshrc
 
     if ! $skipQuestions; then

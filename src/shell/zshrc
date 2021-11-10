@@ -54,3 +54,7 @@ then
 	source ~/.localrc
 fi
 
+if [[ `uname -m` == 'arm64' ]]; then
+	export PATH=/opt/homebrew/bin:$PATH
+fi
+

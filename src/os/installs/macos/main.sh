@@ -12,7 +12,6 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 ./git.sh
 ./chrome.sh
-./gimp.sh
 ./vscode.sh
 ./../nvm.sh
 ./../nvim.sh

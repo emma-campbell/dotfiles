@@ -14,7 +14,7 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 alias pip="pip3.8"
 alias python="python3.8"
-alias vim="nvim"
+
 alias chrome="chrome-cli"
 
 # Load OS specific configs

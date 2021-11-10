@@ -29,6 +29,13 @@ install_homebrew() {
         	#  └─ simulate the ENTER keypress
     	fi
 
+	# for the m1 macs, you need to export the path variable after installing
+	# homebrew. 
+	if [[ `uname -m` == 'arm64' ]];
+	then
+		export PATH=/opt/homebrew/bin:$PATH
+	fi
+
     	print_result $? "Homebrew"
 }
 
