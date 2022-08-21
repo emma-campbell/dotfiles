@@ -12,11 +12,13 @@ alias mv="mv -iv"
 alias c="clear"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 
-alias pip="pip3.8"
-alias python="python3.8"
+alias pip="pip3.9"
+alias python="python3.9"
 
 alias chrome="chrome-cli"
+alias ls="exa --icons"
 
+alias lg="lazygit"
 # Load OS specific configs
 
 . "$HOME/.mac.aliases"

@@ -33,19 +33,12 @@ export LSCOLORS='exfxcxdxbxegedabagacad'
 export CLICOLOR=true
 
 DEFAULT_USER="$(whoami)"
-ZSH_THEME="typewritten"
-TYPEWRITTEN_PROMPT_LAYOUT="singleline_verbose"
 
 declare -a plugins=(zsh-autosuggestions zsh-syntax-highlighting git brew docker docker-compose)
 
 ## NVM path (should be before sourcing zsh)
 export NVM_LAZY_LOAD=true
 export NVM_AUTO_USE=true
-
-if [ -d "$HOME/.ohmyzsh" ];
-then
-    source "$ZSH/oh-my-zsh.sh"
-fi
 
 source ~/.aliases
 
@@ -56,5 +49,15 @@ fi
 
 if [[ `uname -m` == 'arm64' ]]; then
 	export PATH=/opt/homebrew/bin:$PATH
+else
+	export PATH=/usr/local/bin:$PATH
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+eval "$(oh-my-posh prompt init zsh --config ~/.prompt.json)"
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

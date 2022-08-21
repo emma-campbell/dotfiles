@@ -10,11 +10,11 @@ create_symlinks() {
     declare -a FILES_TO_SYMLINK=(
         "shell/aliases"
         "shell/oh-my-zshrc"
-	"shell/zsh_tools"
-	"shell/curlrc"
-	"shell/mac.aliases"
-	"shell/zshrc"
-
+	    "shell/zsh_tools"
+	    "shell/curlrc"
+	    "shell/mac.aliases"
+	    "shell/zshrc"
+        "shell/prompt.json"
         "git/gitconfig"
         "git/gitignore"
     )

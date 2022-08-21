@@ -128,7 +128,7 @@ download_utils() {
         && rm -rf "$tmpFile" \
         && return 0
 
-   return 1
+    return 1
 
 }
 
