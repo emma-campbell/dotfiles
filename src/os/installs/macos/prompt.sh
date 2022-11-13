@@ -12,57 +12,13 @@ export ZSH_CUSTOM_THEMES="$ZSH/custom/themes"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 install_zsh_syntax_highlighting() {
-
-    local ZSH_SYNTAX_HIGHLIGHTING="https://github.com/zsh-users/zsh-syntax-highlighting.git"
-
-    if [ ! -d "$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting" ];
-    then
-        execute \
-            "git clone $ZSH_SYNTAX_HIGHLIGHTING "$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting"" \
-            "zsh-syntax-highlighting (Install)" \
-        || return 1
-    else
-        ask_for_confirmation "'$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting' already exits. Would you like to overwite it?"
-
-        if [ answer_is_yes ];
-        then
-            execute \
-                "rm -rf '$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting' && \
-                    git clone $ZSH_SYNTAX_HIGHLIGHTING '$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting'" \
-                "zsh-syntax-highlighting (Reinstallation)" \
-            || return 1
-        fi
-    fi
-
+    brew_install "ZSH Syntax Highlighting" "zsh-syntax-highlighting"
     print_result $? "zsh-syntax-highlighting"
-
 }
 
 
 install_zsh_autosuggestions() {
-
-    local ZSH_AUTOSUGGESTIONS="https://github.com/zsh-users/zsh-autosuggestions"
-
-    if [ ! -d "$ZSH_CUSTOM_PLUGINS/zsh-autosuggestions" ];
-    then
-        execute \
-            "git clone $ZSH_AUTOSUGGESTIONS '$ZSH_CUSTOM_PLUGINS/zsh-autosuggestions'" \
-            "zsh-autosuggestions (Install)" \
-        || return 1
-    else
-
-        ask_for_confirmation "$ZSH_CUSTOM_PLUGINS/zsh-autosuggestions already exists. Would you like to overwrite it?"
-
-        if [ answer_is_yes ];
-        then
-            execute \
-                "rm -rf '$ZSH_CUSTOM_PLUGINS/zsh-autosuggestions' && \
-                    git clone $ZSH_AUTOSUGGESTIONS '$ZSH_CUSTOM_PLUGINS/zsh-autosuggestions'" \
-                "zsh-autosuggestions (Reinstallation)" \
-            || return 1
-        fi
-    fi
-
+    brew_install "ZSH Autosuggestions" "zsh-autosuggestions"
     print_result $? "zsh-autosuggestions"
 }
 
