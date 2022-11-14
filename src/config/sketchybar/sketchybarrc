@@ -7,8 +7,10 @@ source "$HOME/.config/sketchybar/utils.sh"  # load all utilities
 ITEMS="$HOME/.config/sketchybar/items"
 PLUGINS="$HOME/.config/sketchybar/plugins"
 
+# GENERAL BAR OPTIONS ==================================================
+
 sketchybar --bar color=$BAR_COLOR \
-    height=40 \
+    height=50 \
     shadow=on \
     position=top \
     sticky=on \
@@ -18,33 +20,48 @@ sketchybar --bar color=$BAR_COLOR \
     blur_radius=20
 
 sketchybar --default updates=when_show \
-    icon.font="$FONT:Bold:18.0" \
+    icon.font="$FONT:Bold:16.0" \
     icon.color="$WHITE" \
     icon.padding_left=$PADDING \
     icon.padding_right=$PADDING \
-    label.font="$FONT:Bold:13.0" \
+    label.font="$FONT:Bold:12.0" \
     label.color=$WHITE \
     label.padding_left=$PADDING \
     label.padding_right=$PADDING \
     background.padding_right=$PADDING \
     background.padding_left=$PADDING \
-    background.height=26 \
     background.corner_radius=9 \
-    popup.background.border_width=2 \
     popup.background.corner_radius=11 \
-    popup.background.border_color=$POPUP_COLOR \
     popup.background.color=$POPUP_COLOR \
     popup.background.shadow.drawing=on
 
-# LEFT SIDE OF BAR
+# LEFT SIDE OF BAR ======================================================
+
 source "$ITEMS/apple.sh"
 
-# RIGHT SIDE OF BAR
+# RIGHT SIDE OF BAR =====================================================
+
+# Battery Indicator ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 sketchybar --add item battery right \
     --set battery script="$PLUGINS/battery.sh"
 
+# CPU ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Forcing all item scripts to run (never do this outside of sketchybarrc)
+sketchybar --add item cpu right
+sketchybar --set cpu label.font="$FONT:Bold:12" \
+    label.padding_right=10 \
+    icon="$CPU" \
+    icon.color="$BLUE" \
+    icon.padding_left=10 \
+    update_freq=2 \
+    background.height=30 \
+    background.color="$BLACK" \
+    background.border_color="$DARK_OUTLINE" \
+    background.border_width=2 \
+    script="$HOME/.config/sketchybar/plugins/cpu_usage.sh"
+
+# UPDATE BAR ===========================================================
+
 sketchybar --update
-
 echo "sketchybar configuation loaded.."
