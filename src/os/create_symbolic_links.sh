@@ -17,6 +17,7 @@ create_symlinks() {
         "shell/prompt.json"
         "git/gitconfig"
         "git/gitignore"
+        "config"
     )
 
     local i=""
