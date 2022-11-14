@@ -1,3 +1,7 @@
 test
 **/.DS_Store
 /src/vim/vim/bundle/**
+src/config/gh/hosts.yml
+src/config/configstore/**
+src/config/iterm2/**
+src/config/karabiner/**
