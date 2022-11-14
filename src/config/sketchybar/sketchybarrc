@@ -42,24 +42,36 @@ source "$ITEMS/apple.sh"
 # RIGHT SIDE OF BAR =====================================================
 
 # Battery Indicator ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 sketchybar --add item battery right \
-    --set battery script="$PLUGINS/battery.sh"
+    --set battery script="$PLUGINS/battery.sh" update_freq=300
+
+# DISK ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+sketchybar --add item disk right
+sketchybar --set disk label.font="$FONT:Bold:12" \
+    label.padding_right=10 \
+    icon="$DISK" \
+    icon.color="$BLUE" \
+    update_freq=1 \
+    script="$HOME/.config/sketchybar/plugins/disk.sh"
 
 # CPU ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 sketchybar --add item cpu right
 sketchybar --set cpu label.font="$FONT:Bold:12" \
-    label.padding_right=10 \
+    icon.padding_left=10 \
     icon="$CPU" \
     icon.color="$BLUE" \
-    icon.padding_left=10 \
-    update_freq=2 \
-    background.height=30 \
+    update_freq=1 \
+    script="$HOME/.config/sketchybar/plugins/cpu.sh"
+
+# Add DISK and CPU to Bracket
+sketchybar --add bracket sensors disk cpu
+sketchybar --set sensors \
     background.color="$BLACK" \
+    background.height=30 \
     background.border_color="$DARK_OUTLINE" \
-    background.border_width=2 \
-    script="$HOME/.config/sketchybar/plugins/cpu_usage.sh"
+    background.border_width=2
 
 # UPDATE BAR ===========================================================
 

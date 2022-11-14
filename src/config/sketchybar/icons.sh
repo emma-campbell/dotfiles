@@ -6,4 +6,5 @@ export PREFERENCES=
 export ACTIVITY=
 export FORCE_QUIT=
 export LOCK=
-export CPU=
+export CPU=
+export DISK=
