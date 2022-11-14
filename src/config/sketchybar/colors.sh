@@ -9,6 +9,7 @@ export BLUE=0xff7aa2f7
 export MAGENTA=0xffbb9af7
 export CYAN=0xff7dcfff
 
-export BAR_COLOR=0xe61b1f30
+export BAR_COLOR=0xcc23273a
+export POPUP_COLOR=0xff23273a
 export ICON_COLOR=$WHITE
 export LABEL_COLOR=$WHITE

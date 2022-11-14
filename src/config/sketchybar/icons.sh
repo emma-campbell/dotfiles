@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
 # General Icons
-APPLE=
-PREFERENCES=
+export APPLE=
+export PREFERENCES=
+export ACTIVITY=
+export FORCE_QUIT=
+export LOCK=

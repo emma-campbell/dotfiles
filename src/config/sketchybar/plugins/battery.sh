@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 source $HOME/.config/sketchybar/colors.sh
 
+FONT="Lilex Nerd Font"
 PERCENTAGE=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
 CHARGING=$(pmset -g batt | grep 'AC Power')
 
@@ -33,6 +34,7 @@ fi
 # updated with the current battery status
 sketchybar --set $NAME \
   icon="$ICON" \
-  icon.font="$FONT:Black:16.0" \
+  icon.font="$FONT:Bold:14" \
   icon.color="$COLOR" \
-  label="${PERCENTAGE}%"
+  label="${PERCENTAGE}%" \
+  label.font="$FONT:Bold:14.0" \

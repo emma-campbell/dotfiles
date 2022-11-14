@@ -2,13 +2,10 @@
 
 source "$HOME/.config/sketchybar/colors.sh" # load all colors
 source "$HOME/.config/sketchybar/icons.sh"  # load all icons
-
+source "$HOME/.config/sketchybar/utils.sh"  # load all utilities
 
 ITEMS="$HOME/.config/sketchybar/items"
 PLUGINS="$HOME/.config/sketchybar/plugins"
-
-FONT="Agave Nerd Font" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
-PADDINGS=3 # All paddings use this value (icon, label, background)
 
 sketchybar --bar color=$BAR_COLOR \
     height=40 \
@@ -19,27 +16,33 @@ sketchybar --bar color=$BAR_COLOR \
     margin=8 \
     y_offset=8 \
     blur_radius=20
+
 sketchybar --default updates=when_show \
-    icon.font="$FONT.Bold:14.0" \
-    icon.color="$ICON_COLOR" \
-    icon.padding_left=$PADDINGS \
-    icon.padding_right=$PADDINGS \
-    label.font="$FONT:Semibold:13.0" \
-    label.color=$LABEL_COLOR \
-    label.padding_left=$PADDINGS \
-    label.padding_right=$PADDINGS \
-    background.padding_right=$PADDINGS \
-    background.padding_left=$PADDINGS \
+    icon.font="$FONT:Bold:18.0" \
+    icon.color="$WHITE" \
+    icon.padding_left=$PADDING \
+    icon.padding_right=$PADDING \
+    label.font="$FONT:Bold:13.0" \
+    label.color=$WHITE \
+    label.padding_left=$PADDING \
+    label.padding_right=$PADDING \
+    background.padding_right=$PADDING \
+    background.padding_left=$PADDING \
     background.height=26 \
     background.corner_radius=9 \
     popup.background.border_width=2 \
     popup.background.corner_radius=11 \
-    popup.background.border_color=$POPUP_BORDER_COLOR \
-    popup.background.color=$POPUP_BACKGROUND_COLOR \
+    popup.background.border_color=$POPUP_COLOR \
+    popup.background.color=$POPUP_COLOR \
     popup.background.shadow.drawing=on
 
+# LEFT SIDE OF BAR
+source "$ITEMS/apple.sh"
+
+# RIGHT SIDE OF BAR
 sketchybar --add item battery right \
     --set battery script="$PLUGINS/battery.sh"
+
 
 # Forcing all item scripts to run (never do this outside of sketchybarrc)
 sketchybar --update
