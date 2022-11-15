@@ -8,3 +8,5 @@ export FORCE_QUIT=
 export LOCK=
 export CPU=
 export DISK=
+export UPLOAD=祝
+export DOWNLOAD=

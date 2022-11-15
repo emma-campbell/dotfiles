@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+
 source $HOME/.config/sketchybar/colors.sh
 
 FONT="Lilex Nerd Font"
@@ -10,18 +11,10 @@ if [ $PERCENTAGE = "" ]; then
 fi
 
 case ${PERCENTAGE} in
-9[0-9] | 100)
-  ICON="" COLOR=$GREEN
-  ;;
-[6-8][0-9])
-  ICON="" COLOR=$GREEN
-  ;;
-[3-5][0-9])
-  ICON="" COLOR=$YELLOW
-  ;;
-[1-2][0-9])
-  ICON="" COLOR=$RED
-  ;;
+9[0-9] | 100) ICON="" COLOR=$GREEN ;;
+[6-8][0-9]) ICON="" COLOR=$GREEN ;;
+[3-5][0-9]) ICON="" COLOR=$YELLOW ;;
+[1-2][0-9]) ICON="" COLOR=$RED ;;
 *) ICON="" COLOR=$RED ;;
 esac
 
@@ -37,4 +30,4 @@ sketchybar --set $NAME \
   icon.font="$FONT:Bold:14" \
   icon.color="$COLOR" \
   label="${PERCENTAGE}%" \
-  label.font="$FONT:Bold:14.0" \
+  label.font="$FONT:Bold:14.0"

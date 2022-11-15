@@ -19,7 +19,7 @@ sketchybar --bar color=$BAR_COLOR \
     y_offset=8 \
     blur_radius=20
 
-sketchybar --default updates=when_show \
+sketchybar --default updates=when_shown \
     icon.font="$FONT:Bold:16.0" \
     icon.color="$WHITE" \
     icon.padding_left=$PADDING \
@@ -42,36 +42,60 @@ source "$ITEMS/apple.sh"
 # RIGHT SIDE OF BAR =====================================================
 
 # Battery Indicator ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 sketchybar --add item battery right \
-    --set battery script="$PLUGINS/battery.sh" update_freq=300
+    --set battery script="$PLUGINS/battery.sh" update_freq=5
 
 # DISK ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 sketchybar --add item disk right
 sketchybar --set disk label.font="$FONT:Bold:12" \
-    label.padding_right=10 \
     icon="$DISK" \
     icon.color="$BLUE" \
-    update_freq=1 \
-    script="$HOME/.config/sketchybar/plugins/disk.sh"
+    update_freq=2 \
+    script="$PLUGINS/disk.sh"
 
 # CPU ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 sketchybar --add item cpu right
 sketchybar --set cpu label.font="$FONT:Bold:12" \
-    icon.padding_left=10 \
     icon="$CPU" \
     icon.color="$BLUE" \
+    update_freq=2 \
+    script="$PLUGINS/cpu.sh"
+
+# NETWORK ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+sketchybar --add item network_up right
+sketchybar --set network_up \
+    label.align="right" \
+    label.font="$FONT:Bold:9" \
+    icon.font="$FONT:BOLD:10" \
+    icon=$UPLOAD \
+    icon.color=$BLUE \
+    y_offset=5 \
+    width=0 \
     update_freq=1 \
-    script="$HOME/.config/sketchybar/plugins/cpu.sh"
+    script="$PLUGINS/network.sh"
+
+sketchybar --add item network_down right
+sketchybar --set network_down \
+    label.align="right" \
+    label.font="$FONT:Bold:9" \
+    icon.font="$FONT:Bold:10" \
+    icon=$DOWNLOAD \
+    icon.color=$RED \
+    y_offset=-5
 
 # Add DISK and CPU to Bracket
-sketchybar --add bracket sensors disk cpu
+sketchybar --add bracket sensors disk cpu network_up network_down
 sketchybar --set sensors \
+    background.padding_left=10 \
+    background.padding_right=10 \
     background.color="$BLACK" \
     background.height=30 \
     background.border_color="$DARK_OUTLINE" \
-    background.border_width=2
+    background.border_width=2 
 
 # UPDATE BAR ===========================================================
 
