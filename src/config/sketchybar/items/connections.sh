@@ -53,10 +53,9 @@ sketchybar --add item wifi.settings popup.wifi \
     click_script=" open /System/Library/PreferencePanes/Network.prefPane/; sketchybar --set wifi popup.drawing=off"
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-sketchybar --add bracket connections mic volume bluetooth wifi
+sketchybar --add bracket connections mic bluetooth wifi
 sketchybar --set connections \
     background.padding_left=10 \
-    background.padding_right=10 \
     background.color="$BLACK" \
     background.height=30 \
     background.border_color="$DARK_OUTLINE" \
