@@ -2,13 +2,15 @@
 
 source "$HOME/.config/sketchybar/icons.sh"
 
-sketchybar --add item mic right \
-    --set mic \
-    icon=$MICROPHONE_ON
+sketchybar --add item mic right
+sketchybar --set mic \
+    script="$PLUGINS/mic.sh" \
+    click_script="$SCRIPTS/toggle_mic.sh" \
+    update_freq=60
 
-sketchybar --add item volume right \
-    --set volume \
-    icon=$SOUND_ON
+# sketchybar --add item volume right \
+#     --set volume \
+#     icon=$SOUND_ON
 
 # Bluetooth Indicator ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 BLUETOOTH_POPUP_OFF=" sketchybar --set bluetooth popup.drawing=off"
@@ -17,7 +19,7 @@ sketchybar --add item bluetooth right
 sketchybar --set bluetooth \
     click_script="sketchybar --set bluetooth popup.drawing=toggle" \
     script="$PLUGINS/bluetooth.sh" \
-    update_freq=5
+    update_freq=60
 
 sketchybar --add item bluetooth.toggle popup.bluetooth 
 sketchybar --set bluetooth.toggle icon=$POWER \
