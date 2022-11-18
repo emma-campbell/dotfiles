@@ -3,18 +3,6 @@
 # SYSTEM STATISTICS -----------------------------------------------------
 # -----------------------------------------------------------------------
 
-sketchybar --add item wifi.network popup.wifi 
-sketchybar --add item wifi.speed popup.wifi \
-    --set wifi.speed \
-        script="$PLUGINS/wifi.sh" \
-        updates=when_shown \
-        update_freq=5
-sketchybar --add item wifi.settings popup.wifi \
-    --set wifi.settings \
-        icon=$PREFERENCES \
-        label="Network Settings" \
-        click_script=" open /System/Library/PreferencePanes/Network.prefPane/; sketchybar --set wifi popup.drawing=off"
-
 # DISK ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 sketchybar --add item disk right

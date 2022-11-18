@@ -6,6 +6,7 @@ source "$HOME/.config/sketchybar/utils.sh"  # load all utilities
 
 ITEMS="$HOME/.config/sketchybar/items"
 PLUGINS="$HOME/.config/sketchybar/plugins"
+SCRIPTS="$HOME/.config/sketchybar/scripts"
 
 # GENERAL BAR OPTIONS ==================================================
 
