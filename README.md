@@ -14,6 +14,15 @@ scripts, plus or minus a few things that were needed.
 When creating my dotfiles, I wanted something robust, where I could run one script that would set up all of my tools 
 for me. 
 
+I use a combo of the following
+
+- [oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh)
+- [nvim](https://github.com/neovim/neovim)
+- [lazygit](https://github.com/jesseduffield/lazygit)
+- [lazydocker](https://github.com/jesseduffield/lazydocker)
+
+and then some (see the code).
+
 ## Install
 
 ⚠️ **WARNING** While it's easy to take someones dotfiles and run it on your own machine, it's recommended that you _don't_ unless you completely understand exactly what you are doing.
