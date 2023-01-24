@@ -22,15 +22,9 @@ install_zsh_autosuggestions() {
     print_result $? "zsh-autosuggestions"
 }
 
-install_sketchybar() {
-    brew_tap FelixKratz/formulae && \
-        brew_install "Sketchybar" "sketchybar"
-}
-
 install_plugins() {
     install_zsh_syntax_highlighting && \
-        install_zsh_autosuggestions && \
-        install_sketchybar
+        install_zsh_autosuggestions
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
