@@ -1,4 +1,4 @@
-#!/bin/bash
+# /bin/bash
 
 alias reload!=". ~/.zshrc"
 
@@ -19,6 +19,16 @@ alias chrome="chrome-cli"
 alias ls="exa --icons"
 
 alias lg="lazygit"
+alias ld="lazydocker"
+
+alias encode="echo -n $1 | base64"
+
 # Load OS specific configs
 
-. "$HOME/.mac.aliases"
+if [[ -e "$HOME/.mac.aliases" ]]; then
+	source "$HOME/.mac.aliases"
+fi
+
+if [[ -e "$HOME/.aliases.hugo" ]]; then
+	source "$HOME/.aliases.hugo"
+fi
