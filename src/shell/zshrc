@@ -29,6 +29,8 @@
 export ZSH="$HOME/.ohmyzsh"
 export DOTFILES="$HOME/.dotfiles"
 export PROJECTS="$HOME/projects"
+export DRIVE="$HOME/Library/Mobile Documents"
+export VAULT="$DRIVE/iCloud~md~obsidian/Documents/🧠 Digital Brain"
 
 export LSCOLORS='exfxcxdxbxegedabagacad'
 export CLICOLOR=true
