@@ -49,6 +49,7 @@ if [[ -e ~/.localrc ]]; then
 	source ~/.localrc
 fi
 
+## Add Homebrew Path
 if [[ $(uname -m) == 'arm64' ]]; then
 	export PATH=/opt/homebrew/bin:$PATH
 else
@@ -61,7 +62,11 @@ export NVM_DIR="$HOME/.nvm"
 
 nvm use 16 &>/dev/null
 
+## Add global yarn path
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+## Add java path
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
 eval "$(oh-my-posh prompt init zsh --config ~/.prompt.json)"
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
