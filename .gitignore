@@ -5,4 +5,6 @@ src/config/gh/hosts.yml
 src/config/configstore/**
 src/config/iterm2/**
 src/config/karabiner/**
-src/config/yarm
+src/config/yarn
+src/config/op
+src/config/raycast

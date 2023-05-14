@@ -1,132 +1,100 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "console_title_template": " {{ .Folder }} :: {{if .Root}}Admin{{end}}",
+  "palette": {
+    "main-bg": "#24283b",
+    "terminal-red": "#f7768e",
+    "pistachio-green": "#9ece6a",
+    "clay-orange": "#d7611c",
+    "terminal-green": "#73daca",
+    "terminal-yellow": "#e0af68",
+    "terminal-blue": "#7aa2f7",
+    "celeste-blue": "#b4f9f8",
+    "light-sky-blue": "#7dcfff",
+    "terminal-white": "#c0caf5",
+    "white-blue": "#a9b1d6",
+    "blue-bell": "#9aa5ce",
+    "pastal-grey": "#cfc9c2",
+    "terminal-magenta": "#bb9af7",
+    "blue-black": "#565f89",
+    "terminal-black": "#414868",
+    "t-background": "p:main-bg"
+  },
   "blocks": [
     {
-      "alignment": "right",
+      "alignment": "left",
       "segments": [
         {
-          "background": "#29315A",
-          "foreground": "#3EC669",
-          "leading_diamond": "\ue0b6",
+          "type": "text",
+          "style": "plain",
+          "background": "transparent",
+          "foreground": "p:terminal-blue",
+          "template": "\u279c "
+        },
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "p:terminal-magenta",
           "properties": {
             "style": "folder"
           },
-          "style": "diamond",
-          "template": "\ue5ff {{ .Path }}",
-          "trailing_diamond": "\ue0b4",
-          "type": "path"
+          "template": "<b>{{ .Path }}</b> <p:light-sky-blue>\u26a1</>"
         },
         {
-          "background": "#29315A",
-          "foreground": "#43CCEA",
+          "type": "git",
+          "style": "plain",
+          "foreground": "p:light-sky-blue",
           "foreground_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}#FF9248{{ end }}",
-            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ff4500{{ end }}",
-            "{{ if gt .Ahead 0 }}#B388FF{{ end }}",
-            "{{ if gt .Behind 0 }}#B388FF{{ end }}"
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:terminal-red{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0)}}p:light-sky-blue {{ end }}",
+            "{{ if gt .Ahead 0 }}p:terminal-blue{{ end }}",
+            "{{ if gt .Behind 0 }}p:celeste-blue{{ end }}"
           ],
-          "leading_diamond": " \ue0b6",
+          "template": "({{ .HEAD}})",
           "properties": {
-            "branch_max_length": 25,
-            "fetch_stash_count": true,
             "fetch_status": true,
-            "fetch_upstream_icon": true
-          },
-          "style": "diamond",
-          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
-          "trailing_diamond": "\ue0b4",
-          "type": "git"
+            "branch_icon": "\ue725 "
+          }
         },
         {
-          "background": "#29315A",
-          "foreground": "#E4F34A",
-          "leading_diamond": " \ue0b6",
-          "properties": {
-            "fetch_version": false
-          },
-          "style": "diamond",
-          "template": "\ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}",
-          "trailing_diamond": "\ue0b4",
-          "type": "python"
+          "type": "exit",
+          "style": "plain",
+          "foreground": "p:terminal-red",
+          "template": " \uf00d"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "overflow": "hide",
+      "segments": [
+        {
+          "type": "node",
+          "style": "plain",
+          "foreground": "p:pistachio-green",
+          "template": "\ue718 {{ .Full }} "
         },
         {
-          "background": "#29315A",
-          "foreground": "#7FD5EA",
-          "leading_diamond": " \ue0b6",
-          "properties": {
-            "fetch_version": false
-          },
-          "style": "diamond",
-          "template": "\ufcd1{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
-          "trailing_diamond": "\ue0b4",
-          "type": "go"
+          "type": "python",
+          "style": "plain",
+          "foreground": "p:terminal-yellow",
+          "template": "\uE235 {{ .Full }}"
         },
         {
-          "background": "#29315A",
-          "foreground": "#42E66C",
-          "leading_diamond": " \ue0b6",
-          "properties": {
-            "fetch_version": false
-          },
-          "style": "diamond",
-          "template": "\ue718{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}",
-          "trailing_diamond": "\ue0b4",
-          "type": "node"
+          "type": "rust",
+          "style": "plain",
+          "foreground": "p:clay-orange",
+          "template": " {{ .Full }}"
         },
         {
-          "background": "#29315A",
-          "foreground": "#E64747",
-          "leading_diamond": " \ue0b6",
+          "type": "command",
+          "style": "plain",
+          "foreground": "p:white-blue",
           "properties": {
-            "fetch_version": false
-          },
-          "style": "diamond",
-          "template": "\ue791{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
-          "trailing_diamond": "\ue0b4",
-          "type": "ruby"
-        },
-        {
-          "background": "#29315A",
-          "foreground": "#E64747",
-          "leading_diamond": " \ue0b6",
-          "properties": {
-            "fetch_version": false
-          },
-          "style": "diamond",
-          "template": "\ue738{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
-          "trailing_diamond": "\ue0b4",
-          "type": "java"
-        },
-        {
-          "background": "#29315A",
-          "foreground": "#9B6BDF",
-          "leading_diamond": " \ue0b6",
-          "properties": {
-            "fetch_version": false
-          },
-          "style": "diamond",
-          "template": "\ue624{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
-          "trailing_diamond": "\ue0b4",
-          "type": "julia"
-        },
-        {
-          "background": "#29315A",
-          "foreground": "#9B6BDF",
-          "foreground_templates": [
-            "{{if eq \"Charging\" .State.String}}#40c4ff{{end}}",
-            "{{if eq \"Discharging\" .State.String}}#ff5722{{end}}",
-            "{{if eq \"Full\" .State.String}}#4caf50{{end}}"
-          ],
-          "leading_diamond": " \ue0b6",
-          "properties": {
-            "charged_icon": " ",
-            "charging_icon": "\u21e1 ",
-            "discharging_icon": "\u21e3 "
-          },
-          "style": "diamond",
-          "template": "{{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}{{ .Error }}",
-          "trailing_diamond": "\ue0b4",
-          "type": "battery"
+            "command": "git log --pretty=format:%cr -1 || date +%H:%M:%S",
+            "shell": "bash"
+          }
         }
       ],
       "type": "prompt"
@@ -136,31 +104,26 @@
       "newline": true,
       "segments": [
         {
-          "background": "#29315A",
-          "foreground": "#AEA4BF",
-          "leading_diamond": "\ue0b6",
-          "properties": {
-            "style": "austin",
-            "threshold": 150
-          },
-          "style": "diamond",
-          "template": "{{ .FormattedMs }}",
-          "trailing_diamond": "\ue0b4 ",
-          "type": "executiontime"
-        },
-        {
-          "background": "#29315A",
-          "foreground": "#E64747",
-          "leading_diamond": "\ue0b6",
-          "style": "diamond",
-          "template": "{{ .UserName }} \u276f",
-          "trailing_diamond": "\ue0b4",
+          "foreground": "p:pistachio-green",
+          "style": "plain",
+          "template": "\u25b6",
           "type": "text"
         }
       ],
       "type": "prompt"
     }
   ],
+  "secondary_prompt": {
+    "background": "transparent",
+    "foreground": "p:terminal-blue",
+    "template": "\u279c "
+  },
+  "transient_prompt": {
+    "background": "p:t-background",
+    "foreground": "p:terminal-blue",
+    "template": "\u279c "
+  },
   "final_space": true,
-  "version": 2
+  "version": 2,
+  "terminal_background": "p:t-background"
 }
