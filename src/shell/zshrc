@@ -44,7 +44,7 @@ export NVM_LAZY_LOAD=true
 export NVM_AUTO_USE=true
 
 source ~/.aliases
-
+source ~/.func
 if [[ -e ~/.localrc ]]; then
 	source ~/.localrc
 fi
