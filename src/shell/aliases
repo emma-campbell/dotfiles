@@ -20,6 +20,7 @@ alias ls="exa --icons"
 
 alias lg="lazygit"
 alias ld="lazydocker"
+alias tmux="env TERM=screen-256color tmux"
 
 alias encode="echo -n $1 | base64"
 

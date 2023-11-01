@@ -1,3 +1,13 @@
 mk() {
   mkdir -p "$@" && cd "$@"
 }
+
+killport() {
+  kill -9 $(lsof -i ":$@")
+}
+
+dockerip() {
+  docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$@"
+}
+
+

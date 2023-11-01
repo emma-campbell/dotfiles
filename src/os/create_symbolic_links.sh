@@ -10,6 +10,7 @@ create_symlinks() {
 	declare -a FILES_TO_SYMLINK=(
 		"shell/aliases"
 		"shell/oh-my-zshrc"
+		"shell/node"
 		"shell/func"
 		"shell/zsh_tools"
 		"shell/curlrc"
