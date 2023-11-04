@@ -8,8 +8,8 @@ cd "$(dirname "${BASH_SOURCE[0]}")" &&
 create_symlinks() {
 
 	declare -a FILES_TO_SYMLINK=(
-		"lang/node"
-		"lang/java"
+		"code/nvim"
+		"code/vscode"
 	)
 
 	local i=""
@@ -26,8 +26,15 @@ create_symlinks() {
 
 	for i in "${FILES_TO_SYMLINK[@]}"; do
 
-		sourceFile="$(cd .. && pwd)/$i"
-		targetFile="$HOME/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
+		sourceFile="$(pwd)/$i"
+
+		if [ ! -d "$HOME/.config" ]; then
+			mkdir "$HOME/.config"
+		fi
+
+		targetFile="$HOME/.config/$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
+
+		printf "%s" "$targetFile"
 
 		if [ ! -e "$targetFile" ] || $skipQuestions; then
 
@@ -57,15 +64,13 @@ create_symlinks() {
 			fi
 
 		fi
-
 	done
-
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 main() {
-	print_in_purple "\n • Create language symbolic links\n\n"
+	print_in_purple "\n • Create code editor symbolic links\n\n"
 	create_symlinks "$@"
 }
 
