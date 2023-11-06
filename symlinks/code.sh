@@ -6,7 +6,6 @@ cd "$(dirname "${BASH_SOURCE[0]}")" &&
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 create_symlinks() {
-
 	declare -a FILES_TO_SYMLINK=(
 		"code/nvim"
 		"code/vscode"
@@ -26,20 +25,20 @@ create_symlinks() {
 
 	for i in "${FILES_TO_SYMLINK[@]}"; do
 
-		sourceFile="$(pwd)/$i"
-
+		sourceFile="$(cd .. && pwd)/$i"
+ 		
 		if [ ! -d "$HOME/.config" ]; then
 			mkdir "$HOME/.config"
 		fi
 
 		targetFile="$HOME/.config/$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
 
-		printf "%s" "$targetFile"
+		echo "$targetFile"
 
-		if [ ! -e "$targetFile" ] || $skipQuestions; then
+		if [ ! -d "$targetFile" ] || $skipQuestions; then
 
 			execute \
-				"ln -fs $sourceFile $targetFile" \
+				"ln -s $sourceFile $targetFile" \
 				"$targetFile → $sourceFile"
 
 		elif [ "$(readlink "$targetFile")" == "$sourceFile" ]; then
@@ -54,7 +53,7 @@ create_symlinks() {
 					rm -rf "$targetFile"
 
 					execute \
-						"ln -fs $sourceFile $targetFile" \
+						"ln -s $sourceFile $targetFile" \
 						"$targetFile → $sourceFile"
 
 				else

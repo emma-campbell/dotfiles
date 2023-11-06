@@ -1,36 +1,25 @@
-# dotfiles
+# emma-campbell/dotfiles
 
-This repository contains my (@emma-campbell) entire machine set up! I was reading the other
-day about how dotfiles should be shared, and I became really inspired to create my own set up.
+Planning some much needed TLC for my dotfiles, bringing it up to date with latest OS options and then some.
 
-Originally, much of my inspiration was drawn from [holman/dotfiles](https://github.com/holman/dotfiles). I
-found a deeper understanding of shell scripting from the organization of his directory. The method of installation 
-wasn't really cutting it for me. I wanted something more robust, with the ability to expand to different platforms 
-if need-be. The repository [alrra/dotfiles](https://github.com/alrra/dotfiles) is where I got most of the installation 
-scripts, plus or minus a few things that were needed.
+## Overview
 
-## Features
+### Shell
 
-When creating my dotfiles, I wanted something robust, where I could run one script that would set up all of my tools 
-for me. 
+- [zsh](https://www.zsh.org/)
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+- [zsh-completions](https://github.com/zsh-users/zsh-completions)
+- [fzf-tab](https://github.com/Aloxaf/fzf-tab)
 
-I use a combo of the following
+### Prompt
 
-- [oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh)
-- [nvim](https://github.com/neovim/neovim)
-- [lazygit](https://github.com/jesseduffield/lazygit)
-- [lazydocker](https://github.com/jesseduffield/lazydocker)
+- [oh-my-posh](https://ohmyposh.dev/)
 
-and then some (see the code).
+### Editors
 
-## Install
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Neovim](https://neovim.io/)
+  - [LazyVim](https://www.lazyvim.org/)
 
-⚠️ **WARNING** While it's easy to take someones dotfiles and run it on your own machine, it's recommended that you _don't_ unless you completely understand exactly what you are doing.
-
-Run the following:
-
-```
-git clone https://github.com/emma-campbell/dotfiles  ~/.dotfiles
-cd ~/.dotfiles
-sh ./src/os/setup.sh
-```
+### Window Managers
