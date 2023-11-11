@@ -79,7 +79,6 @@ main() {
 	create_node_local
 	create_java_local
 	create_zsh_local
-	create_aliases_local
 }
 
 main

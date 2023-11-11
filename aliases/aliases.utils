@@ -1,0 +1,3 @@
+#!/bin/bash
+
+alias encode="echo -n $1 | base64"
