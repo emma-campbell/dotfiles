@@ -26,14 +26,12 @@ create_symlinks() {
 	for i in "${FILES_TO_SYMLINK[@]}"; do
 
 		sourceFile="$(cd .. && pwd)/$i"
- 		
+
 		if [ ! -d "$HOME/.config" ]; then
 			mkdir "$HOME/.config"
 		fi
 
 		targetFile="$HOME/.config/$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
-
-		echo "$targetFile"
 
 		if [ ! -d "$targetFile" ] || $skipQuestions; then
 
