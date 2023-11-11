@@ -1,7 +1,6 @@
 #!/bin/bash
 #
 # Create _all_ local configs (~/.*.local)
-#
 
 cd "$(dirname "${BASH_SOURCE[0]}")" &&
 	. "../utils.sh"
