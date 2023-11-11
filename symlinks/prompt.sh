@@ -9,6 +9,8 @@ create_symlinks() {
 
 	declare -a FILES_TO_SYMLINK=(
 		"prompt/prompt.json"
+		"prompt/fetch.jsonc"
+		"prompt/ghost.txt"
 	)
 
 	local i=""
