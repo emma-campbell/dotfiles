@@ -76,7 +76,7 @@ set_xcode_developer_directory() {
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-print_in_purple "   Xcode\n\n"
+print_in_purple "\n   Xcode\n\n"A
 
 install_xcode_command_line_tools
 install_xcode
