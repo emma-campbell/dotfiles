@@ -11,6 +11,8 @@ create_symlinks() {
 		"shell/paths"
 		"shell/prompt"
 		"shell/zshrc"
+		"shell/aliases"
+		"shell/curlrc"
 	)
 
 	local i=""

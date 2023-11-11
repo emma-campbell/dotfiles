@@ -3,7 +3,6 @@
 alias reload!=". ~/.zshrc"
 
 # Load OS specific configs
-for f of ./.aliases.*; do
-  source "$f"
-fi
-
+for f in ~/.aliases.*; do
+	source "$f"
+done

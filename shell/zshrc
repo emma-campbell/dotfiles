@@ -35,8 +35,6 @@ export CLICOLOR=true
 
 DEFAULT_USER="$(whoami)"
 
-declare -a plugins=(zsh-autosuggestions zsh-syntax-highlighting zsh-completions git brew docker docker-compose)
-
 source ~/.node
 source ~/.java
 source ~/.aliases
@@ -46,7 +44,7 @@ if [[ -e ~/.localrc ]]; then
 fi
 
 source ~/.paths
-source ~/.prompt 
+source "$HOME/.prompt"
 
 if [[ -e ~/.zshrc.local ]]; then
   source ~/.zshrc.local
