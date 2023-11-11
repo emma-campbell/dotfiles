@@ -1,6 +1,8 @@
 # emma-campbell/dotfiles
 
+<p align="center">
 ![Terminal](/media/terminal.png)
+</p>
 
 Planning some much needed TLC for my dotfiles, bringing it up to date with latest OS options and then some.
 
