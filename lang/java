@@ -1,0 +1,8 @@
+#!/bin/bash
+
+## Add java path
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+if [[ -e ~/.java.local ]]; then
+  source ~/.java.local
+fi

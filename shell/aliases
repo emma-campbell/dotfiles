@@ -1,0 +1,8 @@
+#!/bin/bash
+
+alias reload!=". ~/.zshrc"
+
+# Load OS specific configs
+for f in ~/.aliases.*; do
+	source "$f"
+done

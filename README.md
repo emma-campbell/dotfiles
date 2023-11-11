@@ -1,36 +1,81 @@
-# dotfiles
+# emma-campbell/dotfiles
 
-This repository contains my (@emma-campbell) entire machine set up! I was reading the other
-day about how dotfiles should be shared, and I became really inspired to create my own set up.
+<p align="center">
+![Terminal](/media/terminal.png)
+</p>
 
-Originally, much of my inspiration was drawn from [holman/dotfiles](https://github.com/holman/dotfiles). I
-found a deeper understanding of shell scripting from the organization of his directory. The method of installation 
-wasn't really cutting it for me. I wanted something more robust, with the ability to expand to different platforms 
-if need-be. The repository [alrra/dotfiles](https://github.com/alrra/dotfiles) is where I got most of the installation 
-scripts, plus or minus a few things that were needed.
+## Overview
 
-## Features
+Here is a brief overview of how the project is organized.
 
-When creating my dotfiles, I wanted something robust, where I could run one script that would set up all of my tools 
-for me. 
-
-I use a combo of the following
-
-- [oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh)
-- [nvim](https://github.com/neovim/neovim)
-- [lazygit](https://github.com/jesseduffield/lazygit)
-- [lazydocker](https://github.com/jesseduffield/lazydocker)
-
-and then some (see the code).
-
-## Install
-
-⚠️ **WARNING** While it's easy to take someones dotfiles and run it on your own machine, it's recommended that you _don't_ unless you completely understand exactly what you are doing.
-
-Run the following:
-
+```sh
+.
+├── README.md
+├── aliases/
+├── code/
+├── func/
+├── git/
+├── lang/
+├── os/
+├── prompt/
+├── shell/
+└── symlinks/
 ```
+
+- `aliases/` contains all aliases, organized in files by type.
+- `code/` contains all IDE/editor configurations, in folders by type.
+- `func/` contains all helper functions
+- `git/` contains all git configuration
+- `lang/` contains all language specific configurations
+- `os/` contains all os-specific installations and preferences
+- `prompt/` contains prompt configuration
+- `shell/` contains all shell configuration
+- `symlinks/` contains all scripts that symlink important files to the root directory (`~/`)
+
+### Shell
+
+- [zsh](https://www.zsh.org/)
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+- [zsh-completions](https://github.com/zsh-users/zsh-completions)
+
+### Prompt
+
+- [oh-my-posh](https://ohmyposh.dev/)
+- [fastfetch](https://github.com/fastfetch-cli/fastfetch)
+
+### Editors
+
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Neovim](https://neovim.io/)
+
+## Installation
+
+> ⚠️ **WARNING**: While it's very easy to take someone's dotfiles and install them to your own machine, it's not recommended unless you understand exactly what you are doing and running.
+>
+> I would _highly_ recommended reading through the codebase before you decide to run the install script.
+
+Given then warning, if you decide to continue, run the following.
+
+### 1. Clone (or fork) the directory
+
+```shell
 git clone https://github.com/emma-campbell/dotfiles  ~/.dotfiles
-cd ~/.dotfiles
-sh ./src/os/setup.sh
 ```
+
+### 2. Change Directories into `~/.dotfiles`
+
+```shell
+cd ~/.dotfiles
+```
+
+### 3. Run the Bootstrap Script
+
+```
+sh bootstrap.sh
+```
+
+## Inspiration
+
+- [holman/dotfiles](https://github.com/holman/dotfiles)
+- [alrra/dotfiles](https://github.com/alrra/dotfiles)

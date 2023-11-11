@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -d "$HOME/.func" ]; then
+  source "$HOME/.func/docker.sh"
+fi
+
+alias dockerip="get_docker_ip"
