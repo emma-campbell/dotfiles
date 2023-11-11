@@ -4,8 +4,6 @@
 ![Terminal](/media/terminal.png)
 </p>
 
-Planning some much needed TLC for my dotfiles, bringing it up to date with latest OS options and then some.
-
 ## Overview
 
 Here is a brief overview of how the project is organized.
@@ -40,16 +38,44 @@ Here is a brief overview of how the project is organized.
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 - [zsh-completions](https://github.com/zsh-users/zsh-completions)
-- [fzf-tab](https://github.com/Aloxaf/fzf-tab)
 
 ### Prompt
 
 - [oh-my-posh](https://ohmyposh.dev/)
+- [fastfetch](https://github.com/fastfetch-cli/fastfetch)
 
 ### Editors
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Neovim](https://neovim.io/)
-  - [LazyVim](https://www.lazyvim.org/)
 
-### Window Managers
+## Installation
+
+> ⚠️ **WARNING**: While it's very easy to take someone's dotfiles and install them to your own machine, it's not recommended unless you understand exactly what you are doing and running.
+>
+> I would _highly_ recommended reading through the codebase before you decide to run the install script.
+
+Given then warning, if you decide to continue, run the following.
+
+### 1. Clone (or fork) the directory
+
+```shell
+git clone https://github.com/emma-campbell/dotfiles  ~/.dotfiles
+```
+
+### 2. Change Directories into `~/.dotfiles`
+
+```shell
+cd ~/.dotfiles
+```
+
+### 3. Run the Bootstrap Script
+
+```
+sh bootstrap.sh
+```
+
+## Inspiration
+
+- [holman/dotfiles](https://github.com/holman/dotfiles)
+- [alrra/dotfiles](https://github.com/alrra/dotfiles)
