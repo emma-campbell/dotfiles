@@ -1,7 +1,7 @@
 # emma-campbell/dotfiles
 
 <p align="center">
-![Terminal](/media/terminal.png)
+<img src="https://github.com/emma-campbell/dotfiles/blob/master/media/terminal.png" height="400px"/>
 </p>
 
 ## Overview
