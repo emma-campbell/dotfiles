@@ -8,11 +8,6 @@ cd "$(dirname "${BASH_SOURCE[0]}")" &&
 
 link_func() {
 
-	declare -a FILES_TO_SYMLINK=(
-		"func"
-	)
-
-	local f=""
 	local src=""
 	local dst=""
 	local skipQuestions=false
@@ -25,40 +20,36 @@ link_func() {
 
 	# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-	for f in "${FILES_TO_SYMLINK[@]}"; do
+	src="$HOME/.dotfiles/func"
+	dst="$HOME/.$(printf "%s" "$src" | sed "s/.*\/\(.*\)/\1/g")"
 
-		sourceFile="$(pwd)/$f"
-		targetFile="$HOME/.$(printf "%s" "$f" | sed "s/.*\/\(.*\)/\1/g")"
+	if [ ! -d "$dst" ] || $skipQuestions; then
+		execute \
+			"ln -s $src $dst" \
+			"$dst → $src"
 
-		if [ ! -d "$targetFile" ] || $skipQuestions; then
+	elif [ "$(readlink "$dst")" == "$src" ]; then
+		print_success "$dst → $src"
+	else
 
-			execute \
-				"ln -s $sourceFile $targetFile" \
-				"$targetFile → $sourceFile"
+		if ! $skipQuestions; then
 
-		elif [ "$(readlink "$targetFile")" == "$sourceFile" ]; then
-			print_success "$targetFile → $sourceFile"
-		else
+			ask_for_confirmation "'$dst' already exists, do you want to overwrite it?"
+			if answer_is_yes; then
 
-			if ! $skipQuestions; then
+				rm -rf "$dst"
 
-				ask_for_confirmation "'$targetFile' already exists, do you want to overwrite it?"
-				if answer_is_yes; then
+				execute \
+					"ln -s $src $dst" \
+					"$dst → $src"
 
-					rm -rf "$targetFile"
-
-					execute \
-						"ln -s $sourceFile $targetFile" \
-						"$targetFile → $sourceFile"
-
-				else
-					print_error "$targetFile → $sourceFile"
-				fi
-
+			else
+				print_error "$dst → $src"
 			fi
 
 		fi
-	done
+
+	fi
 }
 
 print_in_purple "\n • Create func dir symbolic link\n\n"

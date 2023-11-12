@@ -50,4 +50,11 @@ if [[ -e ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
 
+if [[ -d ~/.func ]]; then
+  local f=""
+  for f in ~/.func/*.sh; do
+    source "$f"
+  done
+fi
+
 fastfetch --config ~/.fetch.jsonc
