@@ -112,6 +112,15 @@
     #
     # See also: https://github.com/alrra/dotfiles#gitconfiglocal
 
+[init]
+	defaultBranch = main
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
 [include]
 
     # Load local configs.
@@ -122,11 +131,3 @@
     #     by the local ones
 
     path = ~/.gitconfig.local
-[init]
-	defaultBranch = main
-[credential "https://github.com"]
-	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
