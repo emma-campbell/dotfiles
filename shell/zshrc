@@ -56,5 +56,3 @@ if [[ -d ~/.func ]]; then
     source "$f"
   done
 fi
-
-fastfetch --config ~/.fetch.jsonc

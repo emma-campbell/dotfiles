@@ -39,6 +39,15 @@
           "style": "plain",
           "template": " \uf119",
           "type": "status"
+        },
+        {
+          "type": "executiontime",
+          "style": "plain",
+          "template": " {{ .FormattedMs }}",
+          "properties": {
+            "style": "austin",
+            "always_enabled": true
+          }
         }
       ],
       "type": "prompt"

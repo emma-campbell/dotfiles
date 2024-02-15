@@ -10,3 +10,4 @@ src/config/op/**/*
 src/config/raycast/**/*
 src/config/hugocli/**/*
 src/config/lazygit/**/*
+aliases/aliases.hugo
