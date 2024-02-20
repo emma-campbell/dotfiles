@@ -16,5 +16,6 @@ brew_install "ZSH Syntax Highlighting" "zsh-syntax-highlighting"
 brew_install "ZSH Autosuggestions" "zsh-autosuggestions"
 brew_install "ZSH Completions" "zsh-completions"
 brew_install "Neovim" "neovim"
+brew_install "Zoxide" "zoxide"
 
 install_oh_my_posh
