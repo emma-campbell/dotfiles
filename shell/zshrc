@@ -56,3 +56,7 @@ if [[ -d ~/.func ]]; then
     source "$f"
   done
 fi
+
+eval "$(zoxide init zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
