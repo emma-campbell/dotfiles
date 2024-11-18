@@ -11,4 +11,6 @@ src/config/raycast/**/*
 src/config/hugocli/**/*
 src/config/lazygit/**/*
 aliases/aliases.hugo
+
 os/macos/config/raycast/*
+os/macos/config/karabiner/**

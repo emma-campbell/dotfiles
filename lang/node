@@ -14,9 +14,6 @@ export NVM_DIR="$HOME/.nvm"
 # using ipv4 instead of ipv6 should resolve this.
 export NODE_OPTIONS="--dns-result-order=ipv4first"
 
-# Add global yarn path
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
 if [[ -e ~/.node.local ]]; then
 	source ~/.node.local
 fi
