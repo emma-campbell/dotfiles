@@ -51,8 +51,9 @@ if [[ -e ~/.zshrc.local ]]; then
 fi
 
 if [[ -d ~/.func ]]; then
-  local f=""
-  for f in ~/.func/*.sh; do
+  local files=("${(@f)$(find -L ~/.func -iname "*.sh")}")
+  # read -r files <<< $(find -L ~/.func -iname "*.sh")
+  for f in "${files[@]}"; do
     source "$f"
   done
 fi
