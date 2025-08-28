@@ -1,0 +1,8 @@
+
+#!/bin/bash
+
+# Created by `pipx` on 2025-04-28 21:10:51
+export PATH="$PATH:/Users/emmacampbell/.local/bin"
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit
+

@@ -7,7 +7,7 @@
 # ▐█▄▄▌██ ██▌▐█▌██ ██▌▐█▌▐█ ▪▐▌
 #  ▀▀▀ ▀▀  █▪▀▀▀▀▀  █▪▀▀▀ ▀  ▀
 #
-# © 2021-2024 Emma Campbell
+# © 2021-2025 Emma Campbell
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -37,6 +37,7 @@ DEFAULT_USER="$(whoami)"
 
 source ~/.node
 source ~/.java
+source ~/.python
 source ~/.aliases
 
 if [[ -e ~/.localrc ]]; then
@@ -62,21 +63,21 @@ eval "$(zoxide init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-# pnpm
-export PNPM_HOME="/Users/emmacampbell/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+  export TERM=xterm-256color
+fi
 
-# bit
-case ":$PATH:" in
-  *":/Users/emmacampbell/bin:"*) ;;
-  *) export PATH="$PATH:/Users/emmacampbell/bin" ;;
-esac
-# bit end
-#
-export DYLD_LIBRARY_PATH="/opt/homebrew/opt/cairo/lib:$DYLD_LIBRARY_PATH"
+
+source "$HOME/.cargo/env"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+alias claude="/Users/emmacampbell/.claude/local/claude"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+

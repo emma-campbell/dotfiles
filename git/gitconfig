@@ -98,6 +98,7 @@
     # annotated tags when pushing branches out.
 
     followTags = true
+	autoSetupRemote = true
 
 [user]
 
@@ -105,6 +106,8 @@
     # https://github.com/git/git/blob/90f7b16b3adc78d4bbabbd426fb69aa78c714f71/Documentation/config.txt#L2847-L2855
 
     useConfigOnly = true
+	name = Emma Campbell
+	email = emma@emmacampbell.dev
 
     # [!] DO NOT store sensitive information such as the Git user
     # credentials (`name` / `email`), or things such as the `signingkey`
@@ -130,4 +133,9 @@
     #     order to allow any of the above configs to be overwritten
     #     by the local ones
 
-    path = ~/.gitconfig.local
+  path = ~/.gitconfig.local
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

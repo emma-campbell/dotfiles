@@ -15,5 +15,7 @@ export NVM_DIR="$HOME/.nvm"
 export NODE_OPTIONS="--dns-result-order=ipv4first"
 
 if [[ -e ~/.node.local ]]; then
-	source ~/.node.local
+  source ~/.node.local
 fi
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
