@@ -1,6 +1,6 @@
 # !/bin/bash
 #
-# symlink all window management related files
+# symlink all my tool related scripts and files
 # (mainly my aerospace config)
 #
 
@@ -21,7 +21,7 @@ create_symlinks() {
 
 	# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    for f in ../window/*; do
+    for f in ../tools/*; do
 		sourceFile="$(pwd)/$f"
 		targetFile="$HOME/.$(printf "%s" "$f" | sed "s/.*\/\(.*\)/\1/g")"
 
