@@ -1,26 +1,29 @@
 #!/bin/bash
 
 function bounce() {
-  namespace=$1
-  api=$2
-  env=$3
+  api=$1
+  env=$2
+  namespace="${3:-application}"
 
   echo "==================================================================================="
-  echo "Bouncing \"${namespace}\" in \"${env}\""
+  echo "Bouncing \"${api}-api\" in \"${env}\""
   echo "---------------------------------------------------"
 
   if [ "$env" = "prod" ]; then
       echo "Using production context"
-      kubectl config use-context arn:aws:eks:us-east-1:236731023323:cluster/eksProd > /dev/null
+      kubectl config use-context hugo-prod > /dev/null
   elif [ "$env" = "dev" ]; then
       echo "Using development context"
-      kubectl config use-context arn:aws:eks:us-east-1:851409790737:cluster/eksTest > /dev/null
+      kubectl config use-context hugo-dev > /dev/null
+  elif [ "$env" = "qa" ]; then
+      echo "Using qa context"
+      kubectl config use-context hugo-qa > /dev/null
   else;
       echo "Invalid environment context"
       exit 0
   fi
   
-  kubectl rollout restart "deployment/${api}" -n $namespace
+  kubectl rollout restart "deployment/${api}-api" -n $namespace
 
   echo "==================================================================================="
   echo "\n"
