@@ -28,3 +28,5 @@ alias u="sudo softwareupdate --install --all \
             && brew update \
             && brew upgrade \
             && brew cleanup"
+
+alias claude="~/.local/bin/claude"
