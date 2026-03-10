@@ -19,18 +19,20 @@ Here is a brief overview of how the project is organized.
 ├── os/
 ├── prompt/
 ├── shell/
-└── symlinks/
+├── symlinks/
+└── tools/
 ```
 
-- `aliases/` contains all aliases, organized in files by type.
-- `code/` contains all IDE/editor configurations, in folders by type.
-- `func/` contains all helper functions
+- `aliases/` contains all aliases, organized in files by type
+- `code/` contains all IDE/editor configurations, in folders by type
+- `func/` contains all helper functions (sourced into shell)
 - `git/` contains all git configuration
-- `lang/` contains all language specific configurations
-- `os/` contains all os-specific installations and preferences
-- `prompt/` contains prompt configuration
-- `shell/` contains all shell configuration
-- `symlinks/` contains all scripts that symlink important files to the root directory (`~/`)
+- `lang/` contains all language specific configurations (node, java, python, rust, etc.)
+- `os/` contains all OS-specific installations and preferences
+- `prompt/` contains prompt configuration (oh-my-posh theme)
+- `shell/` contains all shell configuration (zshrc, paths, etc.)
+- `symlinks/` contains all scripts that symlink important files to `~/`
+- `tools/` contains configuration for additional tools
 
 ### Shell
 
@@ -49,31 +51,45 @@ Here is a brief overview of how the project is organized.
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Neovim](https://neovim.io/)
 
+### CLI Tools
+
+- [zoxide](https://github.com/ajeetdsouza/zoxide) - smarter cd command
+- [fzf](https://github.com/junegunn/fzf) - fuzzy finder
+- [direnv](https://direnv.net/) - environment variable management
+
 ## Installation
 
 > ⚠️ **WARNING**: While it's very easy to take someone's dotfiles and install them to your own machine, it's not recommended unless you understand exactly what you are doing and running.
 >
-> I would _highly_ recommended reading through the codebase before you decide to run the install script.
+> I would _highly_ recommend reading through the codebase before you decide to run the install script.
 
-Given then warning, if you decide to continue, run the following.
+Given the warning, if you decide to continue, run the following.
 
-### 1. Clone (or fork) the directory
+### 1. Clone (or fork) the repository
 
 ```shell
-git clone https://github.com/emma-campbell/dotfiles  ~/.dotfiles
+git clone https://github.com/emma-campbell/dotfiles ~/.dotfiles
 ```
 
-### 2. Change Directories into `~/.dotfiles`
+### 2. Run the Bootstrap Script
 
 ```shell
 cd ~/.dotfiles
-```
-
-### 3. Run the Bootstrap Script
-
-```
 sh bootstrap.sh
 ```
+
+Use `-y` to skip confirmation prompts:
+
+```shell
+sh bootstrap.sh -y
+```
+
+### Local Overrides
+
+Machine-specific configuration can be added to these files (not tracked by git):
+
+- `~/.zshrc.local` - local shell configuration
+- `~/.localrc` - local environment variables
 
 ## Inspiration
 
