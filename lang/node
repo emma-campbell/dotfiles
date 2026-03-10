@@ -12,7 +12,7 @@ export NVM_DIR="$HOME/.nvm"
 # when trying to use anything having to do with
 # NPM on node 18. According to stack overflow,
 # using ipv4 instead of ipv6 should resolve this.
-export NODE_OPTIONS="--dns-result-order=ipv4first"
+# export NODE_OPTIONS="--dns-result-order=ipv4first"
 
 if [[ -e ~/.node.local ]]; then
   source ~/.node.local
