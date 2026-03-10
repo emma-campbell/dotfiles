@@ -23,7 +23,8 @@ yarn-error.log*
 .LSOverride
 .Spotlight-V100
 .Trashes
-Icon
+# macOS custom folder icon file (Icon\r)
+Icon?
 
 
 # ----------------------------------------------------------------------
