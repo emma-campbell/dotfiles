@@ -10,7 +10,8 @@ src/config/op/**/*
 src/config/raycast/**/*
 src/config/hugocli/**/*
 src/config/lazygit/**/*
-aliases/aliases.hugo
 
+aliases/aliases.hugo
+func/**/*.local.sh
 os/macos/config/raycast/*
 os/macos/config/karabiner/**
