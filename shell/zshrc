@@ -7,7 +7,7 @@
 # ▐█▄▄▌██ ██▌▐█▌██ ██▌▐█▌▐█ ▪▐▌
 #  ▀▀▀ ▀▀  █▪▀▀▀▀▀  █▪▀▀▀ ▀  ▀
 #
-# © 2021-2025 Emma Campbell
+# © 2021-2026 Emma Campbell
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -35,11 +35,35 @@ export CLICOLOR=true
 
 DEFAULT_USER="$(whoami)"
 
+# source any language specific configurations
+# and files. namely things like node, java, dotnet
+# ect
 source ~/.node
 source ~/.java
 source ~/.python
+
+if [[ -e ~/.terraform ]]; then
+  source ~/.terraform
+fi
+
+if [[ -e ~/.rust ]]; then
+  source ~/.rust
+  source "$HOME/.cargo/env"
+fi
+
+if [[ -e ~/.ruby ]]; then
+  source ~/.ruby
+fi
+
+if [[ -e ~/.dotnet.conf ]]; then 
+  source ~/.dotnet.conf
+fi
+
+if [[ -e ~/.docker.conf ]]; then
+  source ~/.docker.conf
+fi
+
 source ~/.aliases
-source ~/.calibre.sh
 
 if [[ -e ~/.localrc ]]; then
   source ~/.localrc
@@ -52,32 +76,25 @@ if [[ -e ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
 
+# "import" our utility methods
 if [[ -d ~/.func ]]; then
   local files=("${(@f)$(find -L ~/.func -iname "*.sh")}")
-  # read -r files <<< $(find -L ~/.func -iname "*.sh")
   for f in "${files[@]}"; do
     source "$f"
   done
 fi
 
 eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 
 if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
   export TERM=xterm-256color
 fi
 
-
-source "$HOME/.cargo/env"
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
-
-alias claude="/Users/emmacampbell/.claude/local/claude"
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
