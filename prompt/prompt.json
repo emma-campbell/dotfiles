@@ -5,45 +5,101 @@
       "alignment": "left",
       "segments": [
         {
-          "foreground": "#E36464",
-          "style": "plain",
-          "template": "@{{ .UserName }} ",
-          "type": "session"
+          "foreground": "cyan",
+          "style": "powerline",
+          "template": "{{ .Icon }}",
+          "type": "os"
         },
         {
-          "foreground": "#62ED8B",
-          "style": "plain",
-          "template": "\u279c",
-          "type": "text"
-        },
-        {
-          "foreground": "#56B6C2",
-          "properties": {
-            "style": "folder"
+          "foreground": "cyan",
+          "options": {
+            "style": "full"
           },
           "style": "plain",
-          "template": " {{ .Path }}",
+          "template": " {{ .Path }} ",
           "type": "path"
         },
         {
-          "foreground": "#D4AAFC",
-          "properties": {
-            "branch_icon": ""
+          "foreground": "lightYellow",
+          "style": "plain",
+          "template": ":: <lightBlue>git(</>{{ .HEAD }}<lightBlue>)</>",
+          "type": "git"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "foreground": "#68a063",
+          "options": {
+            "display_mode": "files",
+            "fetch_package_manager": true,
+            "fetch_version": true,
+            "npm_icon": "/npm",
+            "yarn_icon": "/yarn"
           },
           "style": "plain",
-          "template": " <#DDB15F>git(</>{{ .HEAD }}<#DDB15F>)</>",
-          "type": "git"
+          "template": " {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}",
+          "type": "node"
         },
         {
-          "foreground": "#DCB977",
+          "foreground": "#4063D8",
+          "options": {
+            "display_mode": "files",
+            "fetch_version": true
+          },
           "style": "plain",
-          "template": " \uf119",
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "type": "crystal"
+        },
+        {
+          "foreground": "#DE3F24",
+          "options": {
+            "display_mode": "files",
+            "fetch_version": true
+          },
+          "style": "plain",
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "type": "ruby"
+        },
+        {
+          "foreground": "#FED142",
+          "options": {
+            "display_mode": "context",
+            "fetch_virtual_env": false
+          },
+          "style": "plain",
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "type": "python"
+        },
+        {
+          "foreground": "lightGreen",
+          "style": "plain",
+          "template": " {{ .CurrentDate | date .Format }} ",
+          "type": "time"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "lightGreen",
+          "foreground_templates": ["{{ if gt .Code 0 }}red{{ end }}"],
+          "options": {
+            "always_enabled": true
+          },
+          "style": "powerline",
+          "template": "\u279c ",
           "type": "status"
         }
       ],
       "type": "prompt"
     }
   ],
-  "final_space": true,
-  "version": 3
+  "version": 4
 }
