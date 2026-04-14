@@ -84,7 +84,12 @@ if [[ -d ~/.func ]]; then
   done
 fi
 
-eval "$(zoxide init zsh)"
+if [[ -z "$CLAUDE_CODE" ]]; then
+  eval "$(zoxide init zsh)"
+else
+  eval "$(zoxide init zsh --no-cmd)"
+  alias z="__zoxide_z"
+fi
 eval "$(direnv hook zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
