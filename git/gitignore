@@ -36,3 +36,5 @@ Icon?
 *.un~
 .netrwhist
 Session.vim
+
+**/.claude/settings.local.json
