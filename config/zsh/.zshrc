@@ -30,6 +30,11 @@
 
 export DOTFILES="$HOME/.dotfiles"
 
+# history is state, not config — keep it out of the repo-symlinked $ZDOTDIR
+# (macOS /etc/zshrc defaults HISTFILE to $ZDOTDIR/.zsh_history)
+export HISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/zsh/history"
+mkdir -p "${HISTFILE:h}"
+
 export LSCOLORS='exfxcxdxbxegedabagacad'
 export CLICOLOR=true
 
