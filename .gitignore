@@ -1,17 +1,14 @@
 test
 **/.DS_Store
-/src/vim/vim/bundle/**
-src/config/gh/hosts.yml
-src/config/configstore/**
-src/config/iterm2/**
-src/config/karabiner/**
-src/config/yarn/**/*
-src/config/op/**/*
-src/config/raycast/**/*
-src/config/hugocli/**/*
-src/config/lazygit/**/*
 
-aliases/aliases.hugo
-func/**/*.local.sh
-os/macos/config/raycast/*
-os/macos/config/karabiner/**
+# iTerm2 runtime state (written through the ~/.config/iterm2 link)
+macos/iterm2/sockets/
+
+# Karabiner writes timestamped backups next to its config
+macos/karabiner/automatic_backups/
+
+# machine-local function overrides
+config/zsh/functions/**/*.local.sh
+
+# zsh completion cache lands in $ZDOTDIR
+config/zsh/.zcompdump*

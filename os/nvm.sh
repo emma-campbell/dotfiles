@@ -3,7 +3,6 @@
 cd "$(dirname "${BASH_SOURCE[0]}")" &&
 	. "../utils.sh"
 
-declare -r LOCAL_SHELL_CONFIG_FILE="$HOME/.zshrc"
 declare -r NVM_DIRECTORY="$HOME/.nvm"
 declare -r NVM_GIT_REPO_URL="https://github.com/nvm-sh/nvm.git"
 
@@ -13,7 +12,7 @@ install_latest_stable_node() {
 	# (this will also set it as the default).
 
 	execute \
-		". $LOCAL_SHELL_CONFIG_FILE \
+		". $NVM_DIRECTORY/nvm.sh \
             && nvm install node" \
 		"nvm (install latest Node)"
 }

@@ -19,8 +19,6 @@ main() {
 	for f in prefs/*.sh; do
 		"./$f"
 	done
-
-	./link.sh
 }
 
 main

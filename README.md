@@ -6,33 +6,29 @@
 
 ## Overview
 
-Here is a brief overview of how the project is organized.
+Configuration is organized as [GNU stow](https://www.gnu.org/software/stow/) packages that follow the
+[XDG base directory](https://specifications.freedesktop.org/basedir-spec/latest/) convention —
+almost everything lands in `~/.config` instead of loose dotfiles in `~`.
 
 ```sh
 .
 ├── README.md
-├── aliases/
-├── code/
-├── func/
-├── git/
-├── lang/
-├── os/
-├── prompt/
-├── shell/
-├── symlinks/
-└── tools/
+├── bootstrap.sh   # full machine setup
+├── link.sh        # stow the packages below into place
+├── config/        # stow package → ~/.config
+│   ├── zsh/       #   shell config ($ZDOTDIR): .zshrc, aliases/, lang/, functions/
+│   ├── git/       #   git config + global ignore (XDG-native)
+│   ├── gh/        #   GitHub CLI
+│   ├── nvim/      #   Neovim (LazyVim)
+│   ├── vscode/    #   VS Code
+│   └── starship.toml # prompt config
+├── home/          # stow package → ~ (.zshenv, .calibre.sh)
+├── macos/         # stow package → ~/.config, macOS only (iterm2, karabiner)
+└── os/            # OS-specific installs and preferences
 ```
 
-- `aliases/` contains all aliases, organized in files by type
-- `code/` contains all IDE/editor configurations, in folders by type
-- `func/` contains all helper functions (sourced into shell)
-- `git/` contains all git configuration
-- `lang/` contains all language specific configurations (node, java, python, rust, etc.)
-- `os/` contains all OS-specific installations and preferences
-- `prompt/` contains prompt configuration (oh-my-posh theme)
-- `shell/` contains all shell configuration (zshrc, paths, etc.)
-- `symlinks/` contains all scripts that symlink important files to `~/`
-- `tools/` contains configuration for additional tools
+Zsh finds its config through `~/.zshenv`, which sets `ZDOTDIR="$XDG_CONFIG_HOME/zsh"` —
+so `.zshrc` and everything it sources live in `~/.config/zsh/`.
 
 ### Shell
 
@@ -43,8 +39,7 @@ Here is a brief overview of how the project is organized.
 
 ### Prompt
 
-- [oh-my-posh](https://ohmyposh.dev/)
-- [fastfetch](https://github.com/fastfetch-cli/fastfetch)
+- [starship](https://starship.rs/)
 
 ### Editors
 
@@ -56,6 +51,7 @@ Here is a brief overview of how the project is organized.
 - [zoxide](https://github.com/ajeetdsouza/zoxide) - smarter cd command
 - [fzf](https://github.com/junegunn/fzf) - fuzzy finder
 - [direnv](https://direnv.net/) - environment variable management
+- [stow](https://www.gnu.org/software/stow/) - symlink manager
 
 ## Installation
 
@@ -84,12 +80,26 @@ Use `-y` to skip confirmation prompts:
 sh bootstrap.sh -y
 ```
 
+### Relinking after changes
+
+Adding a new file inside an already-stowed directory (e.g. `config/zsh/aliases/`)
+needs nothing — the directory symlink picks it up. After adding a whole new
+package directory, re-run:
+
+```shell
+./link.sh
+```
+
+Migrating a machine from the old (pre-stow) layout? Run `./link.sh --cleanup`
+once to remove the legacy `~/.*` symlinks before stowing.
+
 ### Local Overrides
 
 Machine-specific configuration can be added to these files (not tracked by git):
 
 - `~/.zshrc.local` - local shell configuration
 - `~/.localrc` - local environment variables
+- `~/.gitconfig.local` - git identity and per-machine git config
 
 ## Inspiration
 

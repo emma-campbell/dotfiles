@@ -1,6 +1,6 @@
 #!/bin/bash
 
-eval "$(oh-my-posh init zsh --config ~/.prompt.json)"
+eval "$(starship init zsh)"
 source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 if [[ -e ~/.prompt.local ]]; then

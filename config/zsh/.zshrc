@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 #
 #
 # ▄▄▄ .• ▌ ▄ ·. • ▌ ▄ ·.  ▄▄▄·
@@ -35,27 +35,14 @@ export CLICOLOR=true
 
 DEFAULT_USER="$(whoami)"
 
-# source any language specific configurations
-# and files. namely things like node, java, dotnet
-# ect
-source ~/.node
-source ~/.java
-source ~/.python
+alias reload!='source "$ZDOTDIR/.zshrc"'
 
-if [[ -e ~/.terraform ]]; then
-  source ~/.terraform
-fi
+# language-specific configurations (node, java, python, ...)
+for f in "$ZDOTDIR"/lang/*.zsh; do
+  source "$f"
+done
 
-if [[ -e ~/.rust ]]; then
-  source ~/.rust
-  source "$HOME/.cargo/env"
-fi
-
-if [[ -e ~/.ruby ]]; then
-  source ~/.ruby
-fi
-
-if [[ -e ~/.dotnet.conf ]]; then 
+if [[ -e ~/.dotnet.conf ]]; then
   source ~/.dotnet.conf
 fi
 
@@ -63,22 +50,24 @@ if [[ -e ~/.docker.conf ]]; then
   source ~/.docker.conf
 fi
 
-source ~/.aliases
+for f in "$ZDOTDIR"/aliases/*.zsh; do
+  source "$f"
+done
 
 if [[ -e ~/.localrc ]]; then
   source ~/.localrc
 fi
 
-source ~/.paths
-source "$HOME/.prompt"
+source "$ZDOTDIR/paths.zsh"
+source "$ZDOTDIR/prompt.zsh"
 
 if [[ -e ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
 
 # "import" our utility methods
-if [[ -d ~/.func ]]; then
-  local files=("${(@f)$(find -L ~/.func -iname "*.sh")}")
+if [[ -d "$ZDOTDIR/functions" ]]; then
+  local files=("${(@f)$(find -L "$ZDOTDIR/functions" -iname "*.sh")}")
   for f in "${files[@]}"; do
     source "$f"
   done
@@ -98,12 +87,6 @@ eval "$(direnv hook zsh)"
 if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
   export TERM=xterm-256color
 fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
 
 # pnpm
 export PNPM_HOME="/Users/emmacampbell/Library/pnpm"

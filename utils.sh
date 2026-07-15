@@ -264,7 +264,7 @@ print_warning() {
 
 set_trap() {
 	trap -p "$1" | grep "$2" &>/dev/null ||
-		trap '$2' "$1"
+		trap "$2" "$1"
 }
 
 skip_questions() {
