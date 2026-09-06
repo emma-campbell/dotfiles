@@ -100,3 +100,14 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"
+
+# opencode
+export PATH=/Users/emmacampbell/.opencode/bin:$PATH
+
+# bun completions
+[ -s "/Users/emmacampbell/.bun/_bun" ] && source "/Users/emmacampbell/.bun/_bun"
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+eval "$(/Users/emmacampbell/.local/bin/mise activate zsh)"
