@@ -1,13 +1,5 @@
 #!/bin/bash
 
-## NVM path (should be before sourcing zsh)
-export NVM_LAZY_LOAD=true
-export NVM_AUTO_USE=true
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-
 # I keep running into a `ENETUNREACH` error
 # when trying to use anything having to do with
 # NPM on node 18. According to stack overflow,
