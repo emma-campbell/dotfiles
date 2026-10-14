@@ -110,4 +110,5 @@ export PATH=/Users/emmacampbell/.opencode/bin:$PATH
 # bun completions
 [ -s "/Users/emmacampbell/.bun/_bun" ] && source "/Users/emmacampbell/.bun/_bun"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
-eval "$(/Users/emmacampbell/.local/bin/mise activate zsh)"
+# mise manages tool versions (node, java, ...) — config in config/mise/config.toml
+[[ -x "$HOME/.local/bin/mise" ]] && eval "$("$HOME/.local/bin/mise" activate zsh)"
