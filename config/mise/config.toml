@@ -2,5 +2,9 @@
 node = "24"
 java = "21"
 pnpm = "12.11.2"
+claude = "2.1.310"
+codex = "0.164.0"
+opencode = { version = "2.1.4", allow_builds = ["@opencode/cli"] }
+gh = "latest"
 [env]
 NODE_ENV = "development"
