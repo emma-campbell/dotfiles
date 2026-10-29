@@ -7,5 +7,9 @@ codex = "0.164.0"
 opencode = { version = "2.1.4", allow_builds = ["@opencode/cli"] }
 gh = "latest"
 opentofu = "latest"
+uv = "latest"
+ruby = "3.4"
+"gem:fastlane" = "latest"
+"gem:cocoapods" = "latest"
 [env]
 NODE_ENV = "development"
