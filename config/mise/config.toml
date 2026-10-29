@@ -6,5 +6,6 @@ claude = "2.1.310"
 codex = "0.164.0"
 opencode = { version = "2.1.4", allow_builds = ["@opencode/cli"] }
 gh = "latest"
+opentofu = "latest"
 [env]
 NODE_ENV = "development"
