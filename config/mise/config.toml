@@ -11,5 +11,6 @@ uv = "latest"
 ruby = "3.4"
 "gem:fastlane" = "latest"
 "gem:cocoapods" = "latest"
+jq = "latest"
 [env]
 NODE_ENV = "development"
