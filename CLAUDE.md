@@ -32,7 +32,7 @@ exec zsh   # or: reload!
 - `config/` → stowed into `~/.config` (tree-folded: each subdir becomes one symlink, e.g. `~/.config/zsh → ~/.dotfiles/config/zsh`)
   - `zsh/` — `$ZDOTDIR`: `.zshrc`, `paths.zsh`, `prompt.zsh`, `aliases/*.zsh`, `lang/*.zsh`, `functions/**/*.sh`
   - `git/` — `config` + `ignore` (XDG-native; no `~/.gitconfig`)
-  - `gh/`, `nvim/`, `vscode/`, `starship.toml`, `.curlrc`
+  - `gh/`, `nvim/`, `vscode/`, `rex/`, `starship.toml`, `.curlrc`
 - `home/` → stowed into `~`: `.zshenv` (sets `XDG_CONFIG_HOME` + `ZDOTDIR`), `.calibre.sh`
 - `macos/` → stowed into `~/.config`, macOS only: `iterm2/`, `karabiner/`
 

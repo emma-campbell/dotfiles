@@ -14,3 +14,6 @@ config/zsh/functions/**/*.local.sh
 config/zsh/.zcompdump*
 config/zsh/.zsh_history
 config/zsh/.zsh_sessions/
+
+# gh writes auth state here; real file lives at ~/.gh-hosts.local
+config/gh/hosts.yml
