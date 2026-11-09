@@ -1,0 +1,2 @@
+-- Rex configuration. The tmux, Herdr, Ghostty and iTerm2 setups had no key
+-- bindings to carry over, so Rex's defaults apply as they are.
