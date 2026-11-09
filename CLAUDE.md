@@ -36,6 +36,10 @@ exec zsh   # or: reload!
 - `home/` → stowed into `~`: `.zshenv` (sets `XDG_CONFIG_HOME` + `ZDOTDIR`), `.calibre.sh`
 - `macos/` → stowed into `~/.config`, macOS only: `iterm2/`, `karabiner/`
 
+### Background Agents
+- `os/macos/agents/` — scripts run by launchd. Each has an installer in `os/macos/install/` that writes its plist to `~/Library/LaunchAgents` and loads it; plists point at the repo path, since `link.sh` runs after the installers.
+  - `ethernet-wifi.sh` — turns Wi-Fi off while ethernet is connected, back on when it isn't. Logs to `~/Library/Logs/ethernet-wifi.log`.
+
 ### Bootstrap Flow
 1. `bootstrap.sh` → Sources `utils.sh` for helper functions
 2. Runs `ssh.sh` (SSH key setup)
