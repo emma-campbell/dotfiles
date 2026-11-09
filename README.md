@@ -18,8 +18,10 @@ almost everything lands in `~/.config` instead of loose dotfiles in `~`.
 ├── config/        # stow package → ~/.config
 │   ├── zsh/       #   shell config ($ZDOTDIR): .zshrc, aliases/, lang/, functions/
 │   ├── git/       #   git config + global ignore (XDG-native)
-│   ├── gh/        #   GitHub CLI
+│   ├── gh/        #   GitHub CLI (hosts.yml is gitignored)
+│   ├── mise/      #   mise tool versions
 │   ├── nvim/      #   Neovim (LazyVim)
+│   ├── rex/       #   Rex terminal: init.lua + Lua scripts
 │   ├── vscode/    #   VS Code
 │   └── starship.toml # prompt config
 ├── home/          # stow package → ~ (.zshenv, .calibre.sh)
@@ -40,6 +42,11 @@ so `.zshrc` and everything it sources live in `~/.config/zsh/`.
 ### Prompt
 
 - [starship](https://starship.rs/)
+
+### Terminal
+
+- Rex — config in `config/rex/`; `notify.lua` turns terminal bells into macOS
+  notifications (`rex do ~/.config/rex/notify.lua --all`)
 
 ### Editors
 
@@ -100,6 +107,9 @@ Machine-specific configuration can be added to these files (not tracked by git):
 - `~/.zshrc.local` - local shell configuration
 - `~/.localrc` - local environment variables
 - `~/.gitconfig.local` - git identity and per-machine git config
+- `~/.gh-hosts.local` - GitHub CLI auth state. `config/gh/hosts.yml` is gitignored;
+  symlink it here (`ln -s ../../../.gh-hosts.local config/gh/hosts.yml`) to keep
+  any token `gh` writes out of the repo directory
 
 ## Inspiration
 
