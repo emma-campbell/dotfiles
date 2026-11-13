@@ -12,5 +12,6 @@ ruby = "3.4"
 "gem:fastlane" = "latest"
 "gem:cocoapods" = "latest"
 jq = "latest"
+azure = { version = "latest", dependency_prereleases = "allow", with = ["pip"] }
 [env]
 NODE_ENV = "development"
