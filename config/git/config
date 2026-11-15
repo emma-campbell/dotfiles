@@ -119,11 +119,9 @@
 [init]
 	defaultBranch = main
 [credential "https://github.com"]
-	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !/Users/emmacampbell/.local/share/mise/shims/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !/Users/emmacampbell/.local/share/mise/shims/gh auth git-credential
 
 [include]
 
