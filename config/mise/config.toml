@@ -13,5 +13,6 @@ ruby = "3.4"
 "gem:cocoapods" = "latest"
 jq = "latest"
 azure = { version = "latest", dependency_prereleases = "allow", with = ["pip"] }
+"npm:@todoist/cli" = { version = "6.1.0", allow_low_downloads = true }
 [env]
 NODE_ENV = "development"
